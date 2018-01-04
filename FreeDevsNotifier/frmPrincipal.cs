@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
@@ -11,7 +9,13 @@ namespace FreeDevsNotifier
     public partial class frmPrincipal : Form
     {
         private NotifyIcon icono = new NotifyIcon();
-        Dev[] devs = { new Dev(1, "AEchezarraga", "Android"), new Dev(2, "JAlonso", "Nada de nada"), new Dev(3, "GBarron", "THL") };
+        Dev[] devs = {
+            new Dev(1, "Aitor Echezarraga", "Android"),
+            new Dev(2, "Joseba Alonso", "Nada de nada"),
+            new Dev(3, "Gorka Barron", ".NET"),
+            new Dev(3, "Alexander Peña", "Git"),
+            new Dev(1, "Goizalde Machin", "BackOffice"),
+            new Dev(2, "Daniel Crego", "BackOffice") };
 
         public frmPrincipal()
         {
@@ -57,24 +61,29 @@ namespace FreeDevsNotifier
             //Concatenar Listado Devs
             foreach (Dev dev in devs)
             {
-                listado += $@"
+                if(dev.Estado!=3)
+                {
+                    listado += $@"
                     <group>
+                        <subgroup hint-weight='4'>
+                        </subgroup>
                         <subgroup hint-weight='1'>
                             <image src='" + Application.StartupPath + dev.obtenerIcono() + $@"'/>
                         </subgroup>
-                        <subgroup hint-weight='1'>
-                            <text hint-style = 'base' hint-align = 'right'>" + dev.Nombre + $@"</text>
-                            <text hint-style = 'captionSubtle' hint-align = 'right'>" + dev.Especialidad + $@"</text>
-                        </subgroup>
+                        <subgroup hint-weight='7'>
+                            <text hint-style = 'base' hint-align = 'left'>" + dev.Nombre + $@"</text>
+                            <text hint-style = 'captionSubtle' hint-align = 'left'>" + dev.Especialidad + $@"</text>
+                        </subgroup>                        
                     </group>";
-            
+                }
             }
             //Crear XML
             XmlDocument xml = new XmlDocument();
             string contenido = $@"
             <toast>
                 <visual>
-                    <binding template='ToastGeneric'>" +
+                    <binding template='ToastGeneric'>
+                        <text>FreeDevs</text>" +
                         listado + $@"
                     </binding>
                 </visual>
@@ -92,6 +101,7 @@ namespace FreeDevsNotifier
                     </input>
                     <action
                         content = 'Actualizar'
+                        hint-inputId= 'estado'
                         arguments = 'action=refrescar'
                         activationType = 'background'/>
                 </actions>

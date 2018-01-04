@@ -28,13 +28,6 @@ D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevsNotifier\bin\Debug\Micros
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevsNotifier\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.exe
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.pdb
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csprojResolveAssemblyReference.cache
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.frmPrincipal.resources
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.Properties.Resources.resources
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csproj.GenerateResource.Cache
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csproj.CoreCompileInputs.cache
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.exe
-D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.pdb
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\FreeDevsNotifier.exe.config
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\FreeDevsNotifier.exe
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\FreeDevsNotifier.pdb
@@ -61,3 +54,10 @@ D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Deb
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\NotificationsExtensions.Win10.pdb
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\NotificationsExtensions.Win10.xml
 D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.frmPrincipal.resources
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.Properties.Resources.resources
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csproj.GenerateResource.Cache
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csproj.CoreCompileInputs.cache
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.exe
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.pdb
+D:\Proyectos\FreeDevsNotifier\FreeDevsNotifier\FreeDevs\FreeDevsNotifier\obj\Debug\FreeDevsNotifier.csprojResolveAssemblyReference.cache
