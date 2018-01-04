@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -9,7 +10,8 @@ namespace FreeDevsNotifier
 {
     public partial class frmPrincipal : Form
     {
-        private NotifyIcon icono;
+        private NotifyIcon icono = new NotifyIcon();
+        Dev[] devs = { new Dev(1, "AEchezarraga", "Android"), new Dev(2, "JAlonso", "Nada de nada"), new Dev(3, "GBarron", "THL") };
 
         public frmPrincipal()
         {
@@ -24,7 +26,6 @@ namespace FreeDevsNotifier
             Text = "Icono Notificacion";
 
             // Create the NotifyIcon.
-            icono = new NotifyIcon();
             icono.Icon = new Icon("Images/iconoRojo.ico");
             icono.Text = "FreeDevsNotifier";
             icono.Visible = true;
@@ -37,10 +38,12 @@ namespace FreeDevsNotifier
         {
             try
             {
-                // Create the Toast notification from the previous Toast content
-                ToastNotification notificacion = new ToastNotification(cargarContenido());
-                // And then send the Toast
-                ToastNotificationManager.CreateToastNotifier("New Toast Thing").Show(notificacion);
+                //Crear notificación
+                ToastNotification notificacion = new ToastNotification(generarXML());
+                //Asignar Tag para evitar repetición en centro de actividades
+                notificacion.Tag = "X";
+                //Mostrar Notificacion
+                ToastNotificationManager.CreateToastNotifier("FreeDevs").Show(notificacion);
             }
             catch(Exception ex)
             {
@@ -48,79 +51,52 @@ namespace FreeDevsNotifier
             }
         }
 
-        private XmlDocument cargarContenido()
+        private XmlDocument generarXML()
         {
-            ToastContent contenido = new ToastContent()
+            string listado = "";
+            //Concatenar Listado Devs
+            foreach (Dev dev in devs)
             {
-                Visual = new ToastVisual()
-                {
-                    BindingGeneric = new ToastBindingGeneric()
-                    {
-                        Children =
-                        {
-                            new AdaptiveText()
-                            {
-                                Text = "¡¡ EXTRA EXTRA !!",
-                                HintMaxLines = 1
-                            },
-
-                            new AdaptiveText()
-                            {
-                                Text = "Formato Texto Normal"
-                            },
-
-                            new AdaptiveText()
-                            {
-                                Text = "Formato Texto Normal"
-                            }
-                        },
-                        AppLogoOverride = new ToastGenericAppLogo()
-                        {
-                            Source = "https://unsplash.it/64?image=883",
-                            HintCrop = ToastGenericAppLogoCrop.Circle
-                        },
-                        HeroImage = new ToastGenericHeroImage()
-                        {
-                            Source = "https://unsplash.it/360/180?image=1043"
-                        },
-                        Attribution = new ToastGenericAttributionText()
-                        {
-                            Text = "Atributo - Pie de Página"
-                        },
-                    },
-                },
-                Actions = new ToastActionsCustom()
-                {
-                    Inputs =
-                    {
-                        new ToastSelectionBox("estado")
-                        {
-                            DefaultSelectionBoxItemId = "libre",
-                            Items =
-                            {
-                                new ToastSelectionBoxItem("libre", "Libre"),
-                                new ToastSelectionBoxItem("disponible", "Disponible"),
-                                new ToastSelectionBoxItem("ocupado", "Ocupado")
-                            }
-                        }
-                    },
-                    Buttons =
-                    {
-                        new ToastButton("Respuesta 1", "action=reply&threadId=9218")
-                        {
-                            ActivationType = ToastActivationType.Background
-                        },
-
-                        new ToastButton("Respuesta 2", "action=videocall&threadId=9218")
-                        {
-                            ActivationType = ToastActivationType.Foreground
-                        }
-                    }
-                },
-                DisplayTimestamp = new DateTime(2017, 04, 15, 19, 45, 00, DateTimeKind.Utc),
-            };
+                listado += $@"
+                    <group>
+                        <subgroup hint-weight='1'>
+                            <image src='" + Application.StartupPath + dev.obtenerIcono() + $@"'/>
+                        </subgroup>
+                        <subgroup hint-weight='1'>
+                            <text hint-style = 'base' hint-align = 'right'>" + dev.Nombre + $@"</text>
+                            <text hint-style = 'captionSubtle' hint-align = 'right'>" + dev.Especialidad + $@"</text>
+                        </subgroup>
+                    </group>";
+            
+            }
+            //Crear XML
             XmlDocument xml = new XmlDocument();
-            xml.LoadXml(contenido.GetContent());
+            string contenido = $@"
+            <toast>
+                <visual>
+                    <binding template='ToastGeneric'>" +
+                        listado + $@"
+                    </binding>
+                </visual>
+                <actions>
+                    <input id='estado' type='selection' defaultInput='libre'>
+                        <selection 
+                            id = 'libre' 
+                            content = 'Libre'/>
+                        <selection 
+                            id = 'disponible' 
+                            content = 'Disponible'/>
+                        <selection 
+                            id = 'ocupado' 
+                            content = 'Ocupado'/>
+                    </input>
+                    <action
+                        content = 'Actualizar'
+                        arguments = 'action=refrescar'
+                        activationType = 'background'/>
+                </actions>
+            </toast>";
+            xml.LoadXml(contenido);
             return xml;
         }
     }
