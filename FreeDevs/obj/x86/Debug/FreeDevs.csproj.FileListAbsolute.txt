@@ -18,3 +18,13 @@ D:\Proyectos\FreeDevsNotifier\windows-toast-notifications-master\FreeDevs\obj\x8
 D:\Proyectos\FreeDevsNotifier\windows-toast-notifications-master\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CoreCompileInputs.cache
 D:\Proyectos\FreeDevsNotifier\windows-toast-notifications-master\FreeDevs\obj\x86\Debug\FreeDevs.exe
 D:\Proyectos\FreeDevsNotifier\windows-toast-notifications-master\FreeDevs\obj\x86\Debug\FreeDevs.pdb
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\bin\Debug\FreeDevs.pdb
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csprojResolveAssemblyReference.cache
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.Notification.resources
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.NotificationLauncher.resources
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.Properties.Resources.resources
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.GenerateResource.Cache
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CoreCompileInputs.cache
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.exe
+D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.pdb

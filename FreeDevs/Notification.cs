@@ -11,13 +11,13 @@ namespace FreeDevs
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
 
-        public Notification(List<Dev> listado, int duration, FormAnimator.AnimationMethod animation, FormAnimator.AnimationDirection direction, Color color, double opacity)
+        public Notification(List<Dev> listado, int duration, FormAnimator.AnimationMethod animation, FormAnimator.AnimationDirection direction, int speed, Color color, double opacity)
         {
             InitializeComponent();
 
             //Diseño
             Size = new Size(250, 80+22*listado.Count);
-            lvDevs.Size = new Size(220, 0);
+            lvDevs.Size = new Size(220, 22*listado.Count);
             cbEstado.Location = new Point(Location.X+50, Location.Y+9);
 
             lvDevs.Scrollable = false;
@@ -29,15 +29,14 @@ namespace FreeDevs
             BackColor = color;
             Opacity = opacity;
 
-            _animator = new FormAnimator(this, animation, direction, 500);
-            Region = Region.FromHrgn(NativeMethods.CreateRoundRectRgn(0, 0, Width - 5, Height, 0, 0));
+            _animator = new FormAnimator(this, animation, direction, speed);
+            Region = Region.FromHrgn(NativeMethods.CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
 
             //Estados
             cbEstado.Items.Add(" Estoy libre");
             cbEstado.Items.Add(" Estoy disponible");
             cbEstado.Items.Add(" Estoy ocupado");
-            cbEstado.SelectedIndex = 0;
-            
+            cbEstado.SelectedIndex = 0;                             //TODO: Cambiar estado a actual (BD)
 
             //Imagenes
             ImageList iconos = new ImageList();
@@ -54,7 +53,6 @@ namespace FreeDevs
             foreach(Dev dev in listado)
             {
                 lvDevs.Items.Add("    " + dev.Nombre, dev.Estado);
-                lvDevs.Height += 22;
             }
 
         }
@@ -134,12 +132,15 @@ namespace FreeDevs
             {
                 case 0:
                     pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
+                    NotificationLauncher.icono.Icon = Properties.Resources.iconoVerde;
                     break;
                 case 1:
                     pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
+                    NotificationLauncher.icono.Icon = Properties.Resources.iconoNaranja;
                     break;
                 default:
                     pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
+                    NotificationLauncher.icono.Icon = Properties.Resources.iconoRojo;
                     break;
             }
 

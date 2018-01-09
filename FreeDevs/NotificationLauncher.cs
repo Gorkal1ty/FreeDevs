@@ -7,7 +7,8 @@ namespace FreeDevs
 {
     public partial class NotificationLauncher : Form
     {
-        private NotifyIcon icono = new NotifyIcon();
+        public static NotifyIcon icono = new NotifyIcon();
+        public static List<Dev> listado = new List<Dev>();
         private ContextMenu menu = new ContextMenu();
         private Button btnTest;
         Dev[] devs = {
@@ -26,19 +27,15 @@ namespace FreeDevs
         private void ShowNotification()
         {
             int duracion = 5;
+            int velocidad = 250;
             var animacion = FormAnimator.AnimationMethod.Slide;
             var direccion = FormAnimator.AnimationDirection.Up;
             Color color = Color.Black;
             var opacidad = .80;
-            List<Dev> listado = cargarListado();
+            listado = cargarListado();
 
-            var notificacion = new Notification(listado, duracion, animacion, direccion, color, opacidad);
+            var notificacion = new Notification(listado, duracion, animacion, direccion, velocidad, color, opacidad);
             notificacion.Show();
-        }
-
-        private void buttonShowNotification_Click(object sender, EventArgs e)
-        {
-            ShowNotification();
         }
 
         private void NotificationLauncher_Load(object sender, EventArgs e)
@@ -52,20 +49,38 @@ namespace FreeDevs
             icono.Visible = true;
             icono.Click += new EventHandler(iconoNotificacion_Click);
 
-            //TODO: Opciones Menu Ajustes (Click Derecho)
-            //icono.ContextMenu = menu;
+            //Menu Contextual > Click derecho
+            MenuItem ajustes = new MenuItem("Ajustes", Ajustes_Click);
+            MenuItem cerrar = new MenuItem("Cerrar FreeDevs", Cerrar_Click);
+            menu.MenuItems.Add(ajustes);
+            menu.MenuItems.Add(cerrar);
+            icono.ContextMenu = menu;
         }
 
-        private void iconoNotificacion_Click(object Sender, EventArgs e)
+        private void iconoNotificacion_Click(object sender, EventArgs e)
         {
-            try
+            MouseEventArgs mouse = (MouseEventArgs)e;
+            if (mouse.Button.Equals(MouseButtons.Left))
             {
-                ShowNotification();
+                try
+                {
+                    ShowNotification();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en la generación de la notificación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la generación de la notificación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
+
+        private void Ajustes_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ajustes");
+        }
+
+        private void Cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private List<Dev> cargarListado()
