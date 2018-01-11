@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace FreeDevs
+namespace FreeDevs.Entidades
 {
     public class Dev
     {
