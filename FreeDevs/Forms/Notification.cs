@@ -11,7 +11,7 @@ namespace FreeDevs
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
 
-        public Notification(List<Dev> listado, int duration, FormAnimator.AnimationMethod animation, FormAnimator.AnimationDirection direction, int speed, Color color, double opacity)
+        public Notification(List<Dev> listado, int duration, int speed, double opacity)
         {
             InitializeComponent();
 
@@ -19,17 +19,15 @@ namespace FreeDevs
             Size = new Size(250, 80+22*listado.Count);
             lvDevs.Size = new Size(220, 22*listado.Count);
             cbEstado.Location = new Point(Location.X+50, Location.Y+9);
-
+            BackColor = Color.Black;
             lvDevs.Scrollable = false;
             lvDevs.View = View.Details;
 
             //Parametros
             duration = duration * 1000;
             lifeTimer.Interval = duration;
-            BackColor = color;
             Opacity = opacity;
-
-            _animator = new FormAnimator(this, animation, direction, speed);
+            _animator = new FormAnimator(this, FormAnimator.AnimationMethod.Slide, FormAnimator.AnimationDirection.Up, speed);
             Region = Region.FromHrgn(NativeMethods.CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
 
             //Estados
@@ -57,7 +55,7 @@ namespace FreeDevs
 
         }
 
-        #region Methods
+        #region Metodos
 
         public new void Show()
         {
@@ -67,9 +65,9 @@ namespace FreeDevs
             base.Show();
         }
 
-        #endregion // Methods
+        #endregion 
 
-        #region Event Handlers
+        #region Eventos
 
         private void Notification_Load(object sender, EventArgs e)
         {
@@ -101,31 +99,24 @@ namespace FreeDevs
             _animator.Direction = FormAnimator.AnimationDirection.Down;
         }
 
-        private void Click_Cierre(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        #endregion 
-
         private void cbEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Actualizar Estado
 
-            //TODO:...
+            //TODO: Falta Actualización automática a BBDD
             switch (cbEstado.SelectedIndex)
             {
                 case 0:
                     pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
-                    NotificationLauncher.icono.Icon = Properties.Resources.iconoVerde;
+                    formInicio.icono.Icon = Properties.Resources.iconoVerde;
                     break;
                 case 1:
                     pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
-                    NotificationLauncher.icono.Icon = Properties.Resources.iconoNaranja;
+                    formInicio.icono.Icon = Properties.Resources.iconoNaranja;
                     break;
                 default:
                     pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
-                    NotificationLauncher.icono.Icon = Properties.Resources.iconoRojo;
+                    formInicio.icono.Icon = Properties.Resources.iconoRojo;
                     break;
             }
 
@@ -133,14 +124,21 @@ namespace FreeDevs
             //Refrescar
         }
 
+        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
+        }
+
         private void cbEstado_Clicked(object sender, EventArgs e)
         {
             lifeTimer.Stop();
         }
 
-        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
+        private void Click_Cierre(object sender, EventArgs e)
         {
-
+            Close();
         }
+
+        #endregion
     }
 }

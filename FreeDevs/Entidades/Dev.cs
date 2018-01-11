@@ -10,7 +10,7 @@ namespace FreeDevs
         public int Estado { get => estado; set => estado = value; }
         public string Nombre { get => nombre; set => nombre = value; }
 
-        public Dev(int estado, string nombre, string especialidad)
+        public Dev(int estado, string nombre)
         {
             Estado = estado;
             Nombre = nombre;

@@ -13,7 +13,7 @@ namespace FreeDevs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NotificationLauncher());
+            Application.Run(new formInicio());
         }
     }
 }

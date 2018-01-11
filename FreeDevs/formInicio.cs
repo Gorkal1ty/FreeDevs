@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace FreeDevs
 {
-    public partial class NotificationLauncher : Form
+    public partial class formInicio : Form
     {
         //Info Ficticia
         Dev[] devs = {
-            new Dev(0, "Aitor Echezarraga", "Android"),
-            new Dev(1, "Joseba Alonso", "DBS"),
-            new Dev(0, "Gorka Barron", ".NET"),
-            new Dev(1, "Alexander Peña", "Git"),
-            new Dev(3, "Goizalde Machin", "BackOffice"),
-            new Dev(3, "Daniel Crego", "BackOffice") };
+            new Dev(0, "Aitor Echezarraga"),
+            new Dev(1, "Joseba Alonso"),
+            new Dev(0, "Gorka Barron"),
+            new Dev(1, "Alexander Peña"),
+            new Dev(3, "Goizalde Machin"),
+            new Dev(3, "Daniel Crego") };
 
         //Variables Globales
         public Notification notificacion = null;
@@ -22,10 +21,12 @@ namespace FreeDevs
         public static List<Dev> listado = new List<Dev>();
         private ContextMenu menu = new ContextMenu();
 
-        //Parametros
+        //Parametros accesibles desde app y fichero configuracion
+        public int duracion = Properties.Settings.Default.Duracion;
+        public int velocidad = Properties.Settings.Default.Velocidad;
+        public float opacidad = Properties.Settings.Default.Opacidad;
 
-
-        public NotificationLauncher()
+        public formInicio()
         {
             InitializeComponent();
         }
@@ -34,13 +35,13 @@ namespace FreeDevs
         {
             SuspendLayout();
             WindowState = FormWindowState.Minimized;
-            Load += new EventHandler(NotificationLauncher_Load);
+            Load += new EventHandler(formInicio_Load);
+            ResumeLayout(false);
         }
 
-        private void NotificationLauncher_Load(object sender, EventArgs e)
+        private void formInicio_Load(object sender, EventArgs e)
         {
             Hide();
-            Text = "Icono Notificacion";
 
             //Icono
             icono.Icon = Properties.Resources.iconoVerde;
@@ -56,7 +57,8 @@ namespace FreeDevs
             icono.ContextMenu = menu;
         }
 
-        //Eventos
+        #region Eventos
+
         private void iconoNotificacion_Click(object sender, EventArgs e)
         {
             MouseEventArgs mouse = (MouseEventArgs)e;
@@ -70,27 +72,26 @@ namespace FreeDevs
         }
         private void Ajustes_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ajustes");
+            formAjustes ajustes = new formAjustes();
+            ajustes.Show();
         }
         private void Cerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        //Metodos
+        #endregion
+
+        #region Metodos
+
         private void mostrarNotificacion()
         {
             try
             {
-                int duracion = 5;
-                int velocidad = 250;
-                var animacion = FormAnimator.AnimationMethod.Slide;
-                var direccion = FormAnimator.AnimationDirection.Up;
-                Color color = Color.Black;
-                var opacidad = .80;
+                //Actualizar el listado
                 listado = cargarListado();
-
-                notificacion = new Notification(listado, duracion, animacion, direccion, velocidad, color, opacidad);
+                //Generar la notificacion
+                notificacion = new Notification(listado, duracion, velocidad, opacidad);
                 notificacion.Show();
             }
             catch (Exception ex)
@@ -120,5 +121,7 @@ namespace FreeDevs
 
             return listado;
         }
+
+        #endregion
     }
 }

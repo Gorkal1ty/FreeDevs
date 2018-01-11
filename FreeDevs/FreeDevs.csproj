@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,25 +48,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Dev.cs" />
-    <Compile Include="FormAnimator.cs" />
-    <Compile Include="NativeMethods.cs" />
-    <Compile Include="Notification.cs">
+    <Compile Include="Entidades\Dev.cs" />
+    <Compile Include="Clases\FormAnimator.cs" />
+    <Compile Include="Clases\NativeMethods.cs" />
+    <Compile Include="Forms\formAjustes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Notification.designer.cs">
+    <Compile Include="Forms\formAjustes.designer.cs">
+      <DependentUpon>formAjustes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notification.designer.cs">
       <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotificationLauncher.cs">
+    <Compile Include="formInicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Notification.resx">
+    <EmbeddedResource Include="Forms\formAjustes.resx">
+      <DependentUpon>formAjustes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notification.resx">
       <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NotificationLauncher.resx">
-      <DependentUpon>NotificationLauncher.cs</DependentUpon>
+    <EmbeddedResource Include="formInicio.resx">
+      <DependentUpon>formInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +87,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,6 +100,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="docs\MySqlCommand.xml" />
+    <Content Include="docs\MySqlCommandBuilder.xml" />
+    <Content Include="docs\MySqlConnection.xml" />
+    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
+    <Content Include="docs\MySqlDataAdapter.xml" />
+    <Content Include="docs\MySqlDataReader.xml" />
+    <Content Include="docs\MySqlException.xml" />
+    <Content Include="docs\MySqlHelper.xml" />
+    <Content Include="docs\MySqlParameter.xml" />
+    <Content Include="docs\MySqlParameterCollection.xml" />
+    <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Imagenes\iconoNaranja.ico" />
     <Content Include="Imagenes\iconoRojo.ico" />
     <Content Include="Imagenes\iconoVerde.ico" />
@@ -93,7 +118,9 @@
     <Content Include="Imagenes\semaforoRojo.png" />
     <Content Include="Imagenes\semaforoVerde.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
