@@ -101,22 +101,7 @@ namespace FreeDevs
             _animator.Direction = FormAnimator.AnimationDirection.Down;
         }
 
-        private void lifeTimer_Tick(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Notification_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void labelTitle_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void labelRO_Click(object sender, EventArgs e)
+        private void Click_Cierre(object sender, EventArgs e)
         {
             Close();
         }
@@ -151,6 +136,11 @@ namespace FreeDevs
         private void cbEstado_Clicked(object sender, EventArgs e)
         {
             lifeTimer.Stop();
+        }
+
+        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

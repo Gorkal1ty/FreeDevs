@@ -7,10 +7,7 @@ namespace FreeDevs
 {
     public partial class NotificationLauncher : Form
     {
-        public static NotifyIcon icono = new NotifyIcon();
-        public static List<Dev> listado = new List<Dev>();
-        private ContextMenu menu = new ContextMenu();
-        private Button btnTest;
+        //Info Ficticia
         Dev[] devs = {
             new Dev(0, "Aitor Echezarraga", "Android"),
             new Dev(1, "Joseba Alonso", "DBS"),
@@ -19,28 +16,30 @@ namespace FreeDevs
             new Dev(3, "Goizalde Machin", "BackOffice"),
             new Dev(3, "Daniel Crego", "BackOffice") };
 
+        //Variables Globales
+        public Notification notificacion = null;
+        public static NotifyIcon icono = new NotifyIcon();
+        public static List<Dev> listado = new List<Dev>();
+        private ContextMenu menu = new ContextMenu();
+
+        //Parametros
+
+
         public NotificationLauncher()
         {
             InitializeComponent();
         }
 
-        private void ShowNotification()
+        private void InitializeComponent()
         {
-            int duracion = 5;
-            int velocidad = 250;
-            var animacion = FormAnimator.AnimationMethod.Slide;
-            var direccion = FormAnimator.AnimationDirection.Up;
-            Color color = Color.Black;
-            var opacidad = .80;
-            listado = cargarListado();
-
-            var notificacion = new Notification(listado, duracion, animacion, direccion, velocidad, color, opacidad);
-            notificacion.Show();
+            SuspendLayout();
+            WindowState = FormWindowState.Minimized;
+            Load += new EventHandler(NotificationLauncher_Load);
         }
 
         private void NotificationLauncher_Load(object sender, EventArgs e)
         {
-            ShowInTaskbar = true;
+            Hide();
             Text = "Icono Notificacion";
 
             //Icono
@@ -57,30 +56,47 @@ namespace FreeDevs
             icono.ContextMenu = menu;
         }
 
+        //Eventos
         private void iconoNotificacion_Click(object sender, EventArgs e)
         {
             MouseEventArgs mouse = (MouseEventArgs)e;
             if (mouse.Button.Equals(MouseButtons.Left))
             {
-                try
-                {
-                    ShowNotification();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error en la generación de la notificación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (notificacion == null || !notificacion.lifeTimer.Enabled)
+                    mostrarNotificacion();
+                else if (notificacion != null)
+                    notificacion.Close();
             }
         }
-
         private void Ajustes_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ajustes");
         }
-
         private void Cerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        //Metodos
+        private void mostrarNotificacion()
+        {
+            try
+            {
+                int duracion = 5;
+                int velocidad = 250;
+                var animacion = FormAnimator.AnimationMethod.Slide;
+                var direccion = FormAnimator.AnimationDirection.Up;
+                Color color = Color.Black;
+                var opacidad = .80;
+                listado = cargarListado();
+
+                notificacion = new Notification(listado, duracion, animacion, direccion, velocidad, color, opacidad);
+                notificacion.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la generación de la notificación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private List<Dev> cargarListado()
@@ -103,39 +119,6 @@ namespace FreeDevs
             });
 
             return listado;
-        }
-
-        private void InitializeComponent()
-        {
-            this.btnTest = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(92, 101);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(112, 51);
-            this.btnTest.TabIndex = 0;
-            this.btnTest.Text = "TEST";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // NotificationLauncher
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.btnTest);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NotificationLauncher";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Load += new System.EventHandler(this.NotificationLauncher_Load);
-            this.ResumeLayout(false);
-
-        }
-
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            ShowNotification();
         }
     }
 }

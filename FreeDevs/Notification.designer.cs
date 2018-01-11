@@ -38,7 +38,7 @@ namespace FreeDevs
             // 
             // lifeTimer
             // 
-            this.lifeTimer.Tick += new System.EventHandler(this.lifeTimer_Tick);
+            this.lifeTimer.Tick += new System.EventHandler(this.Click_Cierre);
             // 
             // cbEstado
             // 
@@ -66,6 +66,7 @@ namespace FreeDevs
             this.lvDevs.Size = new System.Drawing.Size(244, 67);
             this.lvDevs.TabIndex = 3;
             this.lvDevs.UseCompatibleStateImageBehavior = false;
+            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.lvDevs_SelectedIndexChanged);
             // 
             // pbEstado
             // 
@@ -76,6 +77,7 @@ namespace FreeDevs
             this.pbEstado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEstado.TabIndex = 4;
             this.pbEstado.TabStop = false;
+            this.pbEstado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Click_Cierre);
             // 
             // Notification
             // 
@@ -98,7 +100,7 @@ namespace FreeDevs
             this.Activated += new System.EventHandler(this.Notification_Activated);
             this.Load += new System.EventHandler(this.Notification_Load);
             this.Shown += new System.EventHandler(this.Notification_Shown);
-            this.Click += new System.EventHandler(this.Notification_Click);
+            this.Click += new System.EventHandler(this.Click_Cierre);
             ((System.ComponentModel.ISupportInitialize)(this.pbEstado)).EndInit();
             this.ResumeLayout(false);
 
@@ -106,7 +108,7 @@ namespace FreeDevs
 
         #endregion
 
-        private System.Windows.Forms.Timer lifeTimer;
+        public System.Windows.Forms.Timer lifeTimer;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.ListView lvDevs;
         private System.Windows.Forms.PictureBox pbEstado;
