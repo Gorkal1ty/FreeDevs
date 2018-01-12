@@ -1,3 +1,4 @@
+using FreeDevs.Clases;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,30 +12,27 @@ namespace FreeDevs
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
 
-        public Notification(List<Dev> listado, int duration, int speed, double opacity)
+        public Notification(List<Dev> listado, int duration, int speed, int opacity)
         {
             InitializeComponent();
 
             //Diseño
-            Size = new Size(250, 80+22*listado.Count);
-            lvDevs.Size = new Size(220, 22*listado.Count);
-            cbEstado.Location = new Point(Location.X+50, Location.Y+9);
+            Size = new Size(250, 160 + 22 * listado.Count);
+            lvDevs.Size = new Size(180 + gbEstados.Height, 22*listado.Count);
+            gbEstados.Location = new Point(Location.X + 12, Location.Y + 55 + lvDevs.Height);
             BackColor = Color.Black;
             lvDevs.Scrollable = false;
             lvDevs.View = View.Details;
+            btnEstado1.BackgroundImage = Properties.Resources.estado0;
+            btnEstado2.BackgroundImage = Properties.Resources.estado1;
+            btnEstado3.BackgroundImage = Properties.Resources.estado2;
 
             //Parametros
             duration = duration * 1000;
             lifeTimer.Interval = duration;
-            Opacity = opacity;
-            _animator = new FormAnimator(this, FormAnimator.AnimationMethod.Slide, FormAnimator.AnimationDirection.Up, speed);
+            Opacity = opacity * 0.1;
+            _animator = new FormAnimator(this, FormAnimator.AnimationMethod.Slide, FormAnimator.AnimationDirection.Up, 500 / speed);
             Region = Region.FromHrgn(NativeMethods.CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
-
-            //Estados
-            cbEstado.Items.Add(" Estoy libre");
-            cbEstado.Items.Add(" Estoy disponible");
-            cbEstado.Items.Add(" Estoy ocupado");
-            cbEstado.SelectedIndex = 0;                             //TODO: Cambiar estado a actual (BD)
 
             //Imagenes
             ImageList iconos = new ImageList();
@@ -53,9 +51,84 @@ namespace FreeDevs
                 lvDevs.Items.Add("    " + dev.Nombre, dev.Estado);
             }
 
+            //Nombre & Estado
+            lblNombre.Text = formInicio.usuario;
+            switch (formInicio.estado)
+            {
+                case Constantes.ESTADO_LIBRE:
+                    pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
+                    btnEstado1.BackgroundImage = Properties.Resources.estado0_h;
+                    break;
+                case Constantes.ESTADO_DISPONIBLE:
+                    pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
+                    btnEstado2.BackgroundImage = Properties.Resources.estado1_h;
+                    break;
+                case Constantes.ESTADO_OCUPADO:
+                    pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
+                    btnEstado3.BackgroundImage = Properties.Resources.estado2_h;
+                    break;
+            }
         }
 
-        #region Metodos
+        #region Eventos
+
+        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
+        }
+
+        private void btnEstados_Click(object sender, EventArgs e)
+        {
+            //Actualizar Estado
+
+            //TODO: Falta Actualización automática a BBDD
+            var boton = (Button)sender;
+            switch (boton.Name)
+            {
+                case "btnEstado1":
+                    pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
+                    formInicio.icono.Icon = Properties.Resources.iconoVerde;
+                    btnEstado1.BackgroundImage = Properties.Resources.estado0_h;
+                    btnEstado2.BackgroundImage = Properties.Resources.estado1;
+                    btnEstado3.BackgroundImage = Properties.Resources.estado2;
+                    break;
+                case "btnEstado2":
+                    pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
+                    formInicio.icono.Icon = Properties.Resources.iconoNaranja;
+                    btnEstado1.BackgroundImage = Properties.Resources.estado0;
+                    btnEstado2.BackgroundImage = Properties.Resources.estado1_h;
+                    btnEstado3.BackgroundImage = Properties.Resources.estado2;
+                    break;
+                case "btnEstado3":
+                    pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
+                    formInicio.icono.Icon = Properties.Resources.iconoRojo;
+                    btnEstado1.BackgroundImage = Properties.Resources.estado0;
+                    btnEstado2.BackgroundImage = Properties.Resources.estado1;
+                    btnEstado3.BackgroundImage = Properties.Resources.estado2_h;
+                    break;
+            }
+        }
+        private void btnEstado1_Hover(object sender, EventArgs e)
+        {
+
+        }
+        private void btnEstado2_Hover(object sender, EventArgs e)
+        {
+
+        }
+        private void btnEstado3_Hover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Click_Cierre(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+        #region Funciones Integradas: No Tocar
 
         public new void Show()
         {
@@ -64,10 +137,6 @@ namespace FreeDevs
 
             base.Show();
         }
-
-        #endregion 
-
-        #region Eventos
 
         private void Notification_Load(object sender, EventArgs e)
         {
@@ -78,7 +147,6 @@ namespace FreeDevs
 
             lifeTimer.Start();
         }
-
         private void Notification_Activated(object sender, EventArgs e)
         {
             // Prevent the form taking focus when it is initially shown
@@ -88,7 +156,6 @@ namespace FreeDevs
                 NativeMethods.SetForegroundWindow(_currentForegroundWindow);
             }
         }
-
         private void Notification_Shown(object sender, EventArgs e)
         {
             // Once the animation has completed the form can receive focus
@@ -97,46 +164,6 @@ namespace FreeDevs
             // Close the form by sliding down.
             _animator.Duration = 0;
             _animator.Direction = FormAnimator.AnimationDirection.Down;
-        }
-
-        private void cbEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Actualizar Estado
-
-            //TODO: Falta Actualización automática a BBDD
-            switch (cbEstado.SelectedIndex)
-            {
-                case 0:
-                    pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
-                    formInicio.icono.Icon = Properties.Resources.iconoVerde;
-                    break;
-                case 1:
-                    pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
-                    formInicio.icono.Icon = Properties.Resources.iconoNaranja;
-                    break;
-                default:
-                    pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
-                    formInicio.icono.Icon = Properties.Resources.iconoRojo;
-                    break;
-            }
-
-            lifeTimer.Start();
-            //Refrescar
-        }
-
-        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
-        }
-
-        private void cbEstado_Clicked(object sender, EventArgs e)
-        {
-            lifeTimer.Stop();
-        }
-
-        private void Click_Cierre(object sender, EventArgs e)
-        {
-            Close();
         }
 
         #endregion
