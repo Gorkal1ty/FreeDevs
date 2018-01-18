@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Imagenes\iconoVerde.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
@@ -119,9 +122,19 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <None Include="Imagenes\cancelar.png" />
+    <None Include="Imagenes\guardar.png" />
+    <None Include="Imagenes\estado0.png" />
+    <None Include="Imagenes\estado0_h.png" />
+    <None Include="Imagenes\estado1.png" />
+    <None Include="Imagenes\estado1_h.png" />
+    <None Include="Imagenes\estado2.png" />
+    <None Include="Imagenes\estado2_h.png" />
     <Content Include="Imagenes\iconoNaranja.ico" />
     <Content Include="Imagenes\iconoRojo.ico" />
     <Content Include="Imagenes\iconoVerde.ico" />
+    <None Include="Imagenes\parametros.png" />
+    <None Include="Imagenes\parametros_h.png" />
     <Content Include="Imagenes\semaforoNaranja.png" />
     <Content Include="Imagenes\semaforoRojo.png" />
     <Content Include="Imagenes\semaforoVerde.png" />

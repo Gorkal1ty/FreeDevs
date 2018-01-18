@@ -61,6 +61,26 @@ namespace FreeDevs.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancelar {
+            get {
+                object obj = ResourceManager.GetObject("cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap guardar {
+            get {
+                object obj = ResourceManager.GetObject("guardar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
         internal static System.Drawing.Icon iconoNaranja {
@@ -93,9 +113,9 @@ namespace FreeDevs.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap semaforoNaranja {
+        internal static System.Drawing.Bitmap parametros {
             get {
-                object obj = ResourceManager.GetObject("semaforoNaranja", resourceCulture);
+                object obj = ResourceManager.GetObject("parametros", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,19 +123,9 @@ namespace FreeDevs.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap semaforoRojo {
+        internal static System.Drawing.Bitmap parametros_h {
             get {
-                object obj = ResourceManager.GetObject("semaforoRojo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap semaforoVerde {
-            get {
-                object obj = ResourceManager.GetObject("semaforoVerde", resourceCulture);
+                object obj = ResourceManager.GetObject("parametros_h", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

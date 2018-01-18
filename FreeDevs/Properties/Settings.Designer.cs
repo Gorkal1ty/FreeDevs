@@ -23,39 +23,60 @@ namespace FreeDevs.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int Duracion {
             get {
                 return ((int)(this["Duracion"]));
             }
+            set {
+                this["Duracion"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int Velocidad {
             get {
                 return ((int)(this["Velocidad"]));
             }
+            set {
+                this["Velocidad"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.8")]
-        public float Opacidad {
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int Opacidad {
             get {
-                return ((float)(this["Opacidad"]));
+                return ((int)(this["Opacidad"]));
+            }
+            set {
+                this["Opacidad"] = value;
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Valor {
+        [global::System.Configuration.DefaultSettingValueAttribute("Gorka Barron")]
+        public string Usuario {
             get {
-                return ((string)(this["Valor"]));
+                return ((string)(this["Usuario"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("012")]
+        public string Visualizacion {
+            get {
+                return ((string)(this["Visualizacion"]));
+            }
+            set {
+                this["Visualizacion"] = value;
             }
         }
     }
