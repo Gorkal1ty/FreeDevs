@@ -126,6 +126,8 @@
     <Content Include="Imagenes\iconoNaranja.ico" />
     <Content Include="Imagenes\iconoRojo.ico" />
     <Content Include="Imagenes\iconoVerde.ico" />
+    <None Include="Imagenes\parametros.png" />
+    <None Include="Imagenes\parametros_h.png" />
     <Content Include="Imagenes\semaforoNaranja.png" />
     <Content Include="Imagenes\semaforoRojo.png" />
     <Content Include="Imagenes\semaforoVerde.png" />

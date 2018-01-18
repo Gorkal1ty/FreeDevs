@@ -17,15 +17,16 @@ namespace FreeDevs
             InitializeComponent();
 
             //Diseño
-            Size = new Size(250, 160 + 22 * listado.Count);
-            lvDevs.Size = new Size(180 + gbEstados.Height, 22*listado.Count);
-            gbEstados.Location = new Point(Location.X + 12, Location.Y + 55 + lvDevs.Height);
+            Size = new Size(250, 130 + 22 * listado.Count);
+            lvDevs.Size = new Size(180 + panelBotones.Height, 22 * listado.Count);
+            panelBotones.Location = new Point(Location.X + 4, Location.Y + 55 + lvDevs.Height);
             BackColor = Color.Black;
             lvDevs.Scrollable = false;
             lvDevs.View = View.Details;
-            btnEstado1.BackgroundImage = Properties.Resources.estado0;
-            btnEstado2.BackgroundImage = Properties.Resources.estado1;
-            btnEstado3.BackgroundImage = Properties.Resources.estado2;
+            btnEstado1.BackColor = SystemColors.ControlDarkDark;
+            btnEstado2.BackColor = SystemColors.ControlDarkDark;
+            btnEstado3.BackColor = SystemColors.ControlDarkDark;
+            btnAjustes.BackgroundImage = Properties.Resources.parametros;
 
             //Parametros
             duration = duration * 1000;
@@ -57,25 +58,27 @@ namespace FreeDevs
             {
                 case Constantes.ESTADO_LIBRE:
                     pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
-                    btnEstado1.BackgroundImage = Properties.Resources.estado0_h;
+                    btnEstado1.BackColor = SystemColors.Highlight;
                     break;
                 case Constantes.ESTADO_DISPONIBLE:
                     pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
-                    btnEstado2.BackgroundImage = Properties.Resources.estado1_h;
+                    btnEstado2.BackColor = SystemColors.Highlight;
                     break;
                 case Constantes.ESTADO_OCUPADO:
                     pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
-                    btnEstado3.BackgroundImage = Properties.Resources.estado2_h;
+                    btnEstado3.BackColor = SystemColors.Highlight;
                     break;
             }
         }
 
         #region Eventos
 
-        private void lvDevs_SelectedIndexChanged(object sender, EventArgs e)
+        private void lvDevs_ItemSelectionChanged(object sender, EventArgs e)
         {
             //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
+            lvDevs.SelectedItems.Clear();
         }
+
 
         private void btnEstados_Click(object sender, EventArgs e)
         {
@@ -88,25 +91,26 @@ namespace FreeDevs
                 case "btnEstado1":
                     pbEstado.BackgroundImage = Properties.Resources.iconoVerde.ToBitmap();
                     formInicio.icono.Icon = Properties.Resources.iconoVerde;
-                    btnEstado1.BackgroundImage = Properties.Resources.estado0_h;
-                    btnEstado2.BackgroundImage = Properties.Resources.estado1;
-                    btnEstado3.BackgroundImage = Properties.Resources.estado2;
+                    btnEstado1.BackColor = SystemColors.Highlight;
+                    btnEstado2.BackColor = SystemColors.ControlDarkDark;
+                    btnEstado3.BackColor = SystemColors.ControlDarkDark;
                     break;
                 case "btnEstado2":
                     pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
                     formInicio.icono.Icon = Properties.Resources.iconoNaranja;
-                    btnEstado1.BackgroundImage = Properties.Resources.estado0;
-                    btnEstado2.BackgroundImage = Properties.Resources.estado1_h;
-                    btnEstado3.BackgroundImage = Properties.Resources.estado2;
+                    btnEstado1.BackColor = SystemColors.ControlDarkDark;
+                    btnEstado2.BackColor = SystemColors.Highlight;
+                    btnEstado3.BackColor = SystemColors.ControlDarkDark;
                     break;
                 case "btnEstado3":
                     pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
                     formInicio.icono.Icon = Properties.Resources.iconoRojo;
-                    btnEstado1.BackgroundImage = Properties.Resources.estado0;
-                    btnEstado2.BackgroundImage = Properties.Resources.estado1;
-                    btnEstado3.BackgroundImage = Properties.Resources.estado2_h;
+                    btnEstado1.BackColor = SystemColors.ControlDarkDark;
+                    btnEstado2.BackColor = SystemColors.ControlDarkDark;
+                    btnEstado3.BackColor = SystemColors.Highlight;
                     break;
             }
+            lifeTimer.Interval += 2000;
         }
         private void btnEstado1_Hover(object sender, EventArgs e)
         {
@@ -119,6 +123,23 @@ namespace FreeDevs
         private void btnEstado3_Hover(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAjustes_Click(object sender, EventArgs e)
+        {
+            formAjustes ajustes = new formAjustes();
+            Close();
+            ajustes.Show();
+        }
+
+        private void btnAjustes_Hover(object sender, EventArgs e)
+        {
+            btnAjustes.BackgroundImage = Properties.Resources.parametros_h;
+        }
+
+        private void btnAjustes_Leave(object sender, EventArgs e)
+        {
+            btnAjustes.BackgroundImage = Properties.Resources.parametros;
         }
 
         private void Click_Cierre(object sender, EventArgs e)

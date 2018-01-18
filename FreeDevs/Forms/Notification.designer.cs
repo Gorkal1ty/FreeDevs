@@ -32,14 +32,16 @@ namespace FreeDevs
             this.lifeTimer = new System.Windows.Forms.Timer(this.components);
             this.lvDevs = new System.Windows.Forms.ListView();
             this.pbEstado = new System.Windows.Forms.PictureBox();
-            this.btnEstado2 = new System.Windows.Forms.Button();
-            this.btnEstado1 = new System.Windows.Forms.Button();
-            this.btnEstado3 = new System.Windows.Forms.Button();
-            this.gbEstados = new System.Windows.Forms.GroupBox();
             this.lblLinea = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.btnEstado2 = new System.Windows.Forms.Button();
+            this.btnEstado3 = new System.Windows.Forms.Button();
+            this.btnEstado1 = new System.Windows.Forms.Button();
+            this.panelBotones = new System.Windows.Forms.Panel();
+            this.btnAjustes = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstado)).BeginInit();
-            this.gbEstados.SuspendLayout();
+            this.panelBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAjustes)).BeginInit();
             this.SuspendLayout();
             // 
             // lifeTimer
@@ -59,7 +61,7 @@ namespace FreeDevs
             this.lvDevs.Size = new System.Drawing.Size(226, 67);
             this.lvDevs.TabIndex = 3;
             this.lvDevs.UseCompatibleStateImageBehavior = false;
-            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.lvDevs_SelectedIndexChanged);
+            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.lvDevs_ItemSelectionChanged);
             // 
             // pbEstado
             // 
@@ -70,66 +72,7 @@ namespace FreeDevs
             this.pbEstado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEstado.TabIndex = 4;
             this.pbEstado.TabStop = false;
-            this.pbEstado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Click_Cierre);
-            // 
-            // btnEstado2
-            // 
-            this.btnEstado2.BackColor = System.Drawing.Color.Transparent;
-            this.btnEstado2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEstado2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstado2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstado2.ForeColor = System.Drawing.Color.Black;
-            this.btnEstado2.Location = new System.Drawing.Point(85, 25);
-            this.btnEstado2.Name = "btnEstado2";
-            this.btnEstado2.Size = new System.Drawing.Size(55, 50);
-            this.btnEstado2.TabIndex = 7;
-            this.btnEstado2.UseVisualStyleBackColor = false;
-            this.btnEstado2.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado2.MouseHover += new System.EventHandler(this.btnEstado2_Hover);
-            // 
-            // btnEstado1
-            // 
-            this.btnEstado1.BackColor = System.Drawing.Color.Transparent;
-            this.btnEstado1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEstado1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstado1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstado1.ForeColor = System.Drawing.Color.Black;
-            this.btnEstado1.Location = new System.Drawing.Point(24, 25);
-            this.btnEstado1.Name = "btnEstado1";
-            this.btnEstado1.Size = new System.Drawing.Size(55, 50);
-            this.btnEstado1.TabIndex = 6;
-            this.btnEstado1.UseVisualStyleBackColor = false;
-            this.btnEstado1.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado1.MouseHover += new System.EventHandler(this.btnEstado1_Hover);
-            // 
-            // btnEstado3
-            // 
-            this.btnEstado3.BackColor = System.Drawing.Color.Transparent;
-            this.btnEstado3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEstado3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstado3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstado3.ForeColor = System.Drawing.Color.Black;
-            this.btnEstado3.Location = new System.Drawing.Point(146, 25);
-            this.btnEstado3.Name = "btnEstado3";
-            this.btnEstado3.Size = new System.Drawing.Size(55, 50);
-            this.btnEstado3.TabIndex = 8;
-            this.btnEstado3.UseVisualStyleBackColor = false;
-            this.btnEstado3.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado3.MouseHover += new System.EventHandler(this.btnEstado3_Hover);
-            // 
-            // gbEstados
-            // 
-            this.gbEstados.Controls.Add(this.btnEstado1);
-            this.gbEstados.Controls.Add(this.btnEstado3);
-            this.gbEstados.Controls.Add(this.btnEstado2);
-            this.gbEstados.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEstados.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.gbEstados.Location = new System.Drawing.Point(12, 121);
-            this.gbEstados.Name = "gbEstados";
-            this.gbEstados.Size = new System.Drawing.Size(226, 86);
-            this.gbEstados.TabIndex = 9;
-            this.gbEstados.TabStop = false;
-            this.gbEstados.Text = "Mi Estado";
+            this.pbEstado.Click += new System.EventHandler(this.Click_Cierre);
             // 
             // lblLinea
             // 
@@ -142,13 +85,87 @@ namespace FreeDevs
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblNombre.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblNombre.Location = new System.Drawing.Point(45, 9);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(136, 23);
+            this.lblNombre.Size = new System.Drawing.Size(151, 22);
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Apellido";
+            // 
+            // btnEstado2
+            // 
+            this.btnEstado2.BackColor = System.Drawing.Color.Transparent;
+            this.btnEstado2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstado2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstado2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEstado2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEstado2.Location = new System.Drawing.Point(84, 3);
+            this.btnEstado2.Name = "btnEstado2";
+            this.btnEstado2.Size = new System.Drawing.Size(75, 65);
+            this.btnEstado2.TabIndex = 7;
+            this.btnEstado2.Text = "Disponible";
+            this.btnEstado2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnEstado2.UseVisualStyleBackColor = false;
+            this.btnEstado2.Click += new System.EventHandler(this.btnEstados_Click);
+            this.btnEstado2.MouseHover += new System.EventHandler(this.btnEstado2_Hover);
+            // 
+            // btnEstado3
+            // 
+            this.btnEstado3.BackColor = System.Drawing.Color.Transparent;
+            this.btnEstado3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstado3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstado3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEstado3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEstado3.Location = new System.Drawing.Point(165, 3);
+            this.btnEstado3.Name = "btnEstado3";
+            this.btnEstado3.Size = new System.Drawing.Size(75, 65);
+            this.btnEstado3.TabIndex = 8;
+            this.btnEstado3.Text = "Ocupado";
+            this.btnEstado3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnEstado3.UseVisualStyleBackColor = false;
+            this.btnEstado3.Click += new System.EventHandler(this.btnEstados_Click);
+            this.btnEstado3.MouseHover += new System.EventHandler(this.btnEstado3_Hover);
+            // 
+            // btnEstado1
+            // 
+            this.btnEstado1.BackColor = System.Drawing.Color.Transparent;
+            this.btnEstado1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstado1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstado1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstado1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEstado1.Location = new System.Drawing.Point(3, 3);
+            this.btnEstado1.Name = "btnEstado1";
+            this.btnEstado1.Size = new System.Drawing.Size(75, 65);
+            this.btnEstado1.TabIndex = 6;
+            this.btnEstado1.Text = "Libre";
+            this.btnEstado1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnEstado1.UseVisualStyleBackColor = false;
+            this.btnEstado1.Click += new System.EventHandler(this.btnEstados_Click);
+            this.btnEstado1.MouseHover += new System.EventHandler(this.btnEstado1_Hover);
+            // 
+            // panelBotones
+            // 
+            this.panelBotones.Controls.Add(this.btnEstado1);
+            this.panelBotones.Controls.Add(this.btnEstado3);
+            this.panelBotones.Controls.Add(this.btnEstado2);
+            this.panelBotones.Location = new System.Drawing.Point(4, 145);
+            this.panelBotones.Name = "panelBotones";
+            this.panelBotones.Size = new System.Drawing.Size(242, 70);
+            this.panelBotones.TabIndex = 9;
+            // 
+            // btnAjustes
+            // 
+            this.btnAjustes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAjustes.Location = new System.Drawing.Point(217, 7);
+            this.btnAjustes.Name = "btnAjustes";
+            this.btnAjustes.Size = new System.Drawing.Size(27, 26);
+            this.btnAjustes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnAjustes.TabIndex = 12;
+            this.btnAjustes.TabStop = false;
+            this.btnAjustes.MouseHover += new System.EventHandler(this.btnAjustes_Hover);
+            this.btnAjustes.MouseLeave += new System.EventHandler(this.btnAjustes_Leave);
+            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
             // 
             // Notification
             // 
@@ -158,9 +175,10 @@ namespace FreeDevs
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(250, 219);
             this.ControlBox = false;
+            this.Controls.Add(this.btnAjustes);
+            this.Controls.Add(this.panelBotones);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblLinea);
-            this.Controls.Add(this.gbEstados);
             this.Controls.Add(this.pbEstado);
             this.Controls.Add(this.lvDevs);
             this.DoubleBuffered = true;
@@ -174,7 +192,8 @@ namespace FreeDevs
             this.Shown += new System.EventHandler(this.Notification_Shown);
             this.Click += new System.EventHandler(this.Click_Cierre);
             ((System.ComponentModel.ISupportInitialize)(this.pbEstado)).EndInit();
-            this.gbEstados.ResumeLayout(false);
+            this.panelBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnAjustes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,11 +204,12 @@ namespace FreeDevs
         public System.Windows.Forms.Timer lifeTimer;
         private System.Windows.Forms.ListView lvDevs;
         private System.Windows.Forms.PictureBox pbEstado;
-        private System.Windows.Forms.Button btnEstado2;
-        private System.Windows.Forms.Button btnEstado1;
-        private System.Windows.Forms.Button btnEstado3;
-        private System.Windows.Forms.GroupBox gbEstados;
         private System.Windows.Forms.Label lblLinea;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Button btnEstado2;
+        private System.Windows.Forms.Button btnEstado3;
+        private System.Windows.Forms.Button btnEstado1;
+        private System.Windows.Forms.Panel panelBotones;
+        private System.Windows.Forms.PictureBox btnAjustes;
     }
 }

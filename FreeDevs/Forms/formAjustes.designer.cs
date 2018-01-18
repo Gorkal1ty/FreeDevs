@@ -30,7 +30,6 @@ namespace FreeDevs
         {
             this.label1 = new System.Windows.Forms.Label();
             this.lblConfOpacidad = new System.Windows.Forms.Label();
-            this.btnConfGuardar = new System.Windows.Forms.Button();
             this.sbOpacidad = new System.Windows.Forms.HScrollBar();
             this.gbConfMarco = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -42,6 +41,7 @@ namespace FreeDevs
             this.cbConfVelocidad = new System.Windows.Forms.ComboBox();
             this.lblConfDuracion = new System.Windows.Forms.Label();
             this.lblConfVelocidad = new System.Windows.Forms.Label();
+            this.btnConfGuardar = new System.Windows.Forms.Button();
             this.btnConfCancelar = new System.Windows.Forms.Button();
             this.gbConfMarco.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -71,20 +71,6 @@ namespace FreeDevs
             this.lblConfOpacidad.Size = new System.Drawing.Size(77, 18);
             this.lblConfOpacidad.TabIndex = 1;
             this.lblConfOpacidad.Text = "Opacidad";
-            // 
-            // btnConfGuardar
-            // 
-            this.btnConfGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfGuardar.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnConfGuardar.Location = new System.Drawing.Point(52, 270);
-            this.btnConfGuardar.Name = "btnConfGuardar";
-            this.btnConfGuardar.Size = new System.Drawing.Size(55, 50);
-            this.btnConfGuardar.TabIndex = 2;
-            this.btnConfGuardar.UseVisualStyleBackColor = false;
-            this.btnConfGuardar.Click += new System.EventHandler(this.btnConfGuardar_Click);
             // 
             // sbOpacidad
             // 
@@ -231,17 +217,37 @@ namespace FreeDevs
             this.lblConfVelocidad.TabIndex = 4;
             this.lblConfVelocidad.Text = "Velocidad";
             // 
+            // btnConfGuardar
+            // 
+            this.btnConfGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConfGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfGuardar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConfGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConfGuardar.Location = new System.Drawing.Point(36, 270);
+            this.btnConfGuardar.Name = "btnConfGuardar";
+            this.btnConfGuardar.Size = new System.Drawing.Size(75, 65);
+            this.btnConfGuardar.TabIndex = 7;
+            this.btnConfGuardar.Text = "Guardar";
+            this.btnConfGuardar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConfGuardar.UseVisualStyleBackColor = false;
+            this.btnConfGuardar.Click += new System.EventHandler(this.btnConfGuardar_Click_1);
+            // 
             // btnConfCancelar
             // 
             this.btnConfCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnConfCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnConfCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfCancelar.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnConfCancelar.Location = new System.Drawing.Point(134, 270);
+            this.btnConfCancelar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConfCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConfCancelar.Location = new System.Drawing.Point(127, 270);
             this.btnConfCancelar.Name = "btnConfCancelar";
-            this.btnConfCancelar.Size = new System.Drawing.Size(55, 50);
-            this.btnConfCancelar.TabIndex = 5;
+            this.btnConfCancelar.Size = new System.Drawing.Size(75, 65);
+            this.btnConfCancelar.TabIndex = 8;
+            this.btnConfCancelar.Text = "Cancelar";
+            this.btnConfCancelar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnConfCancelar.UseVisualStyleBackColor = false;
             this.btnConfCancelar.Click += new System.EventHandler(this.btnConfCancelar_Click);
             // 
@@ -251,11 +257,11 @@ namespace FreeDevs
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(250, 326);
+            this.ClientSize = new System.Drawing.Size(250, 344);
             this.ControlBox = false;
             this.Controls.Add(this.btnConfCancelar);
-            this.Controls.Add(this.gbConfMarco);
             this.Controls.Add(this.btnConfGuardar);
+            this.Controls.Add(this.gbConfMarco);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -279,7 +285,6 @@ namespace FreeDevs
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblConfOpacidad;
-        private System.Windows.Forms.Button btnConfGuardar;
         private System.Windows.Forms.HScrollBar sbOpacidad;
         private System.Windows.Forms.GroupBox gbConfMarco;
         private System.Windows.Forms.ComboBox cbConfVelocidad;
@@ -291,6 +296,7 @@ namespace FreeDevs
         private System.Windows.Forms.CheckBox cbConfEstado3;
         private System.Windows.Forms.CheckBox cbConfEstado2;
         private System.Windows.Forms.CheckBox cbConfEstado1;
+        private System.Windows.Forms.Button btnConfGuardar;
         private System.Windows.Forms.Button btnConfCancelar;
     }
 }

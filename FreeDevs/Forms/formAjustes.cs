@@ -27,8 +27,10 @@ namespace FreeDevs
             BackColor = Color.Black;
             Opacity = formInicio.opacidad * 0.1;
 
-            btnConfGuardar.BackgroundImage = Properties.Resources.guardar;
-            btnConfCancelar.BackgroundImage = Properties.Resources.cancelar;
+            btnConfGuardar.BackColor = SystemColors.ControlDarkDark;
+            btnConfCancelar.BackColor = SystemColors.ControlDarkDark; 
+            btnConfGuardar.Image = Properties.Resources.guardar;
+            btnConfCancelar.Image = Properties.Resources.cancelar;
 
             //Parametros
             _animator = new FormAnimator(this, FormAnimator.AnimationMethod.Slide, FormAnimator.AnimationDirection.Up, 250);
@@ -100,7 +102,7 @@ namespace FreeDevs
             _animator.Direction = FormAnimator.AnimationDirection.Down;
         }
 
-        private void btnConfGuardar_Click(object sender, EventArgs e)
+        private void btnConfGuardar_Click_1(object sender, EventArgs e)
         {
             guardarAjustes();
         }
@@ -145,6 +147,5 @@ namespace FreeDevs
         {
             Opacity = e.NewValue * 0.1;
         }
-
     }
 }
