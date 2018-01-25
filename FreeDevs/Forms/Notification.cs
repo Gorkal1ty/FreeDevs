@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using FreeDevs.Entidades;
 
 namespace FreeDevs
 {
@@ -111,19 +110,6 @@ namespace FreeDevs
                     btnEstado3.BackColor = SystemColors.Highlight;
                     break;
             }
-            lifeTimer.Interval += 2000;
-        }
-        private void btnEstado1_Hover(object sender, EventArgs e)
-        {
-
-        }
-        private void btnEstado2_Hover(object sender, EventArgs e)
-        {
-
-        }
-        private void btnEstado3_Hover(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
@@ -146,6 +132,16 @@ namespace FreeDevs
         private void Click_Cierre(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Notification_Mouse_Hover(object sender, EventArgs e)
+        {
+            lifeTimer.Stop();
+        }
+
+        private void Notification_Mouse_Leave(object sender, EventArgs e)
+        {
+            lifeTimer.Start();
         }
 
         #endregion

@@ -225,9 +225,9 @@ namespace FreeDevs
             this.btnConfGuardar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConfGuardar.Location = new System.Drawing.Point(36, 270);
+            this.btnConfGuardar.Location = new System.Drawing.Point(12, 270);
             this.btnConfGuardar.Name = "btnConfGuardar";
-            this.btnConfGuardar.Size = new System.Drawing.Size(75, 65);
+            this.btnConfGuardar.Size = new System.Drawing.Size(108, 65);
             this.btnConfGuardar.TabIndex = 7;
             this.btnConfGuardar.Text = "Guardar";
             this.btnConfGuardar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -242,9 +242,9 @@ namespace FreeDevs
             this.btnConfCancelar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConfCancelar.Location = new System.Drawing.Point(127, 270);
+            this.btnConfCancelar.Location = new System.Drawing.Point(126, 270);
             this.btnConfCancelar.Name = "btnConfCancelar";
-            this.btnConfCancelar.Size = new System.Drawing.Size(75, 65);
+            this.btnConfCancelar.Size = new System.Drawing.Size(114, 65);
             this.btnConfCancelar.TabIndex = 8;
             this.btnConfCancelar.Text = "Cancelar";
             this.btnConfCancelar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;

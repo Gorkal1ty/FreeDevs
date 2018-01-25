@@ -5,13 +5,6 @@ using System.Windows.Forms;
 
 namespace FreeDevs
 {
-    /*
-     * TODO: Formulario ajustes Properties.Settings:
-     * - Duración
-     * - Velocidad
-     * - Opacidad
-     * - Estilo (colores??)
-     */
 
     public partial class formAjustes : Form
     {
