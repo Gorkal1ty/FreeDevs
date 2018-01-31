@@ -30,3 +30,17 @@ D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.pdb
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formInicio.resources
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe.config
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formAjustes.resources
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csprojResolveAssemblyReference.cache
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formAjustes.resources
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.Notification.resources
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formInicio.resources
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.Properties.Resources.resources
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.GenerateResource.Cache
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CoreCompileInputs.cache
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.exe
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.pdb
+D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe.config
+D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe
+D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\FreeDevs.pdb
+D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\MySql.Data.dll
+D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\MySql.Data.xml

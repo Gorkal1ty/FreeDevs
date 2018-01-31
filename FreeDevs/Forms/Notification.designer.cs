@@ -108,7 +108,6 @@ namespace FreeDevs
             this.btnEstado2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnEstado2.UseVisualStyleBackColor = false;
             this.btnEstado2.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado2.MouseHover += new System.EventHandler(this.btnEstado2_Hover);
             // 
             // btnEstado3
             // 
@@ -125,7 +124,6 @@ namespace FreeDevs
             this.btnEstado3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnEstado3.UseVisualStyleBackColor = false;
             this.btnEstado3.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado3.MouseHover += new System.EventHandler(this.btnEstado3_Hover);
             // 
             // btnEstado1
             // 
@@ -142,7 +140,6 @@ namespace FreeDevs
             this.btnEstado1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnEstado1.UseVisualStyleBackColor = false;
             this.btnEstado1.Click += new System.EventHandler(this.btnEstados_Click);
-            this.btnEstado1.MouseHover += new System.EventHandler(this.btnEstado1_Hover);
             // 
             // panelBotones
             // 

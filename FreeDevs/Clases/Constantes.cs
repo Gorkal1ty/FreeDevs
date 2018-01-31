@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FreeDevs.Clases
+﻿namespace FreeDevs.Clases
 {
     class Constantes
     {
-
         public const int ESTADO_LIBRE              = 0;
         public const int ESTADO_DISPONIBLE         = 1;
         public const int ESTADO_OCUPADO            = 2;

@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using FreeDevs.Clases;
+using FreeDevs.Controlador;
 
 namespace FreeDevs
 {
     public partial class formInicio : Form
     {
-        //Info Ficticia
-        Dev[] devs = {
-            new Dev(0, "Aitor Echezarraga"),
-            new Dev(0, "Joseba Alonso"),
-            new Dev(0, "Gorka Barron"),
-            new Dev(1, "Alexander Peña"),
-            new Dev(1, "Goizalde Machin"),
-            new Dev(2, "Daniel Crego") };
+        //Conexión BBDD
+        private ConexionSQL conexion = new ConexionSQL(Endpoints.SERVIDOR, Endpoints.BD, Endpoints.USUARIO, Endpoints.PASS);
 
         //Variables Globales
         public Notification notificacion = null;
@@ -48,8 +43,6 @@ namespace FreeDevs
         private void formInicio_Load(object sender, EventArgs e)
         {
             Hide();
-
-            //MessageBox.Show("Usuario: " + usuario + "\nDuracion: " + duracion.ToString() + "\nVelocidad: " + velocidad.ToString() + "\n Opacidad: " + opacidad.ToString());
 
             //Icono
             icono.Text = "FreeDevs";
@@ -114,7 +107,7 @@ namespace FreeDevs
             try
             {
                 //Actualizar el listado
-                listado = cargarListado();
+                cargarEmpleados();
                 //Generar la notificacion
                 notificacion = new Notification(listado, duracion, velocidad, opacidad);
                 notificacion.Show();
@@ -125,13 +118,13 @@ namespace FreeDevs
             }
         }
 
-        private List<Dev> cargarListado()
+        private void cargarEmpleados()
         {
-            List<Dev> listado = new List<Dev>();
-
-            //Concatenar Listado Devs >> Todo: Carga BBDD
+            //Carga de BBDD
+            List<Dev> devs = conexion.ObtenerEmpleados();
 
             //Carga según estados (evita ordenación automática)
+            listado.Clear();
             foreach (Dev dev in devs)
             {
                 if (dev.Nombre != usuario && dev.Estado.Equals(Constantes.ESTADO_LIBRE) && visualizacion.Contains(Constantes.VISUALIZAR_LIBRE))
@@ -147,13 +140,11 @@ namespace FreeDevs
                 if (dev.Nombre != usuario && dev.Estado.Equals(Constantes.ESTADO_OCUPADO) && visualizacion.Contains(Constantes.VISUALIZAR_OCUPADO))
                     listado.Add(dev);
             }
-
-            return listado;
         }
 
         private Icon obtenerIcono(string usuario)
         {
-            foreach (Dev dev in devs)
+            foreach (Dev dev in listado)
             {
                 if (dev.Nombre.Equals(usuario))
                 {
