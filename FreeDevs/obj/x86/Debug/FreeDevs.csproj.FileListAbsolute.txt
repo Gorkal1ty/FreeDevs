@@ -44,3 +44,4 @@ D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe
 D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\FreeDevs.pdb
 D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\MySql.Data.dll
 D:\Proyectos\FreeDevs\FreeDevs\bin\Debug\MySql.Data.xml
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CopyComplete

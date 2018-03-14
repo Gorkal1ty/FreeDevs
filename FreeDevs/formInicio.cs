@@ -10,13 +10,15 @@ namespace FreeDevs
     public partial class formInicio : Form
     {
         //Conexión BBDD
-        private ConexionSQL conexion = new ConexionSQL(Endpoints.SERVIDOR, Endpoints.BD, Endpoints.USUARIO, Endpoints.PASS);
+        private static ConexionSQL conexion = new ConexionSQL(Endpoints.SERVIDOR, Endpoints.BD, Endpoints.USUARIO, Endpoints.PASS);
 
         //Variables Globales
         public Notification notificacion = null;
         public formAjustes ajustes = null;
         public static int estado = Constantes.ESTADO_OCUPADO;
+        public static string tarea = "";
         public static NotifyIcon icono = new NotifyIcon();
+        private static List<Dev> devs = new List<Dev>();
         public static List<Dev> listado = new List<Dev>();
         private ContextMenu menu = new ContextMenu();
 
@@ -26,6 +28,8 @@ namespace FreeDevs
         public static int velocidad = Properties.Settings.Default.Velocidad;
         public static int opacidad = Properties.Settings.Default.Opacidad;
         public static string visualizacion = Properties.Settings.Default.Visualizacion;
+
+        internal static ConexionSQL Conexion { get => conexion; set => conexion = value; }
 
         public formInicio()
         {
@@ -44,11 +48,17 @@ namespace FreeDevs
         {
             Hide();
 
+            //Carga Inicial
+            cargarEmpleados();
+
             //Icono
             icono.Text = "FreeDevs";
             icono.Visible = true;
             icono.Click += new EventHandler(iconoNotificacion_Click);
             icono.Icon = obtenerIcono(usuario);
+
+            //Tarea
+            tarea = obtenerTarea(usuario);
 
             //Menu Contextual > Click derecho
             MenuItem mostrar = new MenuItem("Mostrar", Mostrar_Click);
@@ -121,7 +131,20 @@ namespace FreeDevs
         private void cargarEmpleados()
         {
             //Carga de BBDD
-            List<Dev> devs = conexion.ObtenerEmpleados();
+            //List<Dev> devs = conexion.ObtenerEmpleados();
+
+            devs.Clear();
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Aitor Etxezarraga", "Contratación Digital MC"));
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Joseba Alonso", "FS R1"));
+            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Gorka Barron", "GDPR Alta Prospectos"));
+            devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Goizalde Machin", "#8516"));
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Alexander Peña", "FSM Francia"));
+            devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Daniel Crego", "#8516"));
+            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Asier Cortes", ""));
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Unai Rabanal", "GDPR Alta Facil"));
+            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Eneko Soraluze", ""));
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Gaizka Montero", "Contratación Digital MC"));
+            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Endika Salgueiro", "Contratación Digital MC"));
 
             //Carga según estados (evita ordenación automática)
             listado.Clear();
@@ -144,13 +167,10 @@ namespace FreeDevs
 
         private Icon obtenerIcono(string usuario)
         {
-            foreach (Dev dev in listado)
-            {
-                if (dev.Nombre.Equals(usuario))
-                {
+            foreach (Dev dev in devs){
+                if (dev.Nombre.Equals(usuario)){
                     estado = dev.Estado;
-                    switch (estado)
-                    {
+                    switch (estado){
                         case Constantes.ESTADO_LIBRE:
                             return Properties.Resources.iconoVerde;
                         case Constantes.ESTADO_DISPONIBLE:
@@ -161,6 +181,16 @@ namespace FreeDevs
                 }
             }
             return Properties.Resources.iconoRojo;
+        }
+
+        private String obtenerTarea(string usuario)
+        {
+            foreach (Dev dev in devs){
+                if (dev.Nombre.Equals(usuario)){
+                    return dev.Tarea;
+                }
+            }
+            return "Introduce aquí tu tarea";
         }
 
         #endregion

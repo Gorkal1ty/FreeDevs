@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace FreeDevs.Controlador
@@ -36,7 +37,7 @@ namespace FreeDevs.Controlador
         {
             Console.WriteLine("[INFO] ObtenerEmpleados()");
 
-            string query = "SELECT estado, nombre FROM empleados";
+            string query = "SELECT estado, nombre, tarea FROM empleados";
 
             List<Dev> empleados = new List<Dev>();
 
@@ -47,12 +48,13 @@ namespace FreeDevs.Controlador
 
                 while (dataReader.Read())
                 {
-                    string nombre = dataReader["nombre"] + "";
-                    int estado = dataReader.GetInt32("estado");
-                                        
-                    Dev developer = new Dev(estado, nombre);
+                    int estado      = dataReader.GetInt32("estado");
+                    string nombre   = dataReader["nombre"] + "";
+                    string tarea    = dataReader["tarea"] + "";
+
+                    Dev developer = new Dev(estado, nombre, tarea);
                     Console.Write("[ConexionSQL] ObtenerEmpleados: ");
-                    Console.Write(developer.Nombre + " - " + developer.Estado);
+                    Console.Write(developer.Nombre + " - " + developer.Estado + " " + developer.Tarea);
                     empleados.Add(developer);
                 }
 
@@ -68,7 +70,32 @@ namespace FreeDevs.Controlador
             }
         }
 
-        public void nsertarEmpleado(string nombre)
+        public void actualizarEmpleado(string nombre, string tarea, bool estado)
+        {
+            String query = "UPDATE empleados SET estado = '" + estado + ", tarea = '" + tarea + " WHERE nombre = '" + nombre + "'";
+
+            if (abrirConexion() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.ExecuteNonQuery();
+                cerrarConexion();
+            }
+        }
+
+        public void actualizarTarea(string nombre, string tarea)
+        {
+            String query = "UPDATE empleados SET tarea = '" + tarea + " WHERE nombre = '" + nombre + "'";
+
+            if (abrirConexion() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.ExecuteNonQuery();
+                cerrarConexion();
+            }
+        }
+
+        /*
+        public void InsertarEmpleado(string nombre)
         {
             String query = "insert into empleados (nombre) values ('" + nombre + "'";
 
@@ -79,24 +106,13 @@ namespace FreeDevs.Controlador
                 cerrarConexion();
             }
         }
-
-        public void actualizarEmpleado(string nombre, bool estado)
-        {
-            String query = "update empleados set estado = '" + estado + "' where nombre = '" + nombre + "'";
-
-            if (abrirConexion() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                cmd.ExecuteNonQuery();
-                cerrarConexion();
-            }
-        }
+        */
 
         #endregion
 
         #region Utilidades
 
-            private bool abrirConexion()
+        private bool abrirConexion()
             {
                 try
                 {
@@ -105,15 +121,13 @@ namespace FreeDevs.Controlador
                 }
                 catch (MySqlException e)
                 {
-                    //The two most common error numbers when connecting are as follows:
-                    //0: Cannot connect to server.
-                    //1045: Invalid user name and/or password.
+                    MessageBox.Show("Imposible conectar con la BBDD", "Error Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     switch (e.Number)
                     {
                         case 0:
-                            Console.Write("Cannot connect to server.  Contact administrator");
+                        case 1042:
+                            Console.Write("Invalid username/password, please try again");
                             break;
-
                         case 1045:
                             Console.Write("Invalid username/password, please try again");
                             break;
@@ -121,7 +135,8 @@ namespace FreeDevs.Controlador
                     return false;
                 }
             }
-            private bool cerrarConexion()
+
+        private bool cerrarConexion()
             {
                 bool con = false;
                 try

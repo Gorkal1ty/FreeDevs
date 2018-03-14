@@ -6,14 +6,17 @@ namespace FreeDevs
     {
         private int estado;
         private string nombre;
+        private string tarea;
 
         public int Estado { get => estado; set => estado = value; }
         public string Nombre { get => nombre; set => nombre = value; }
+        public string Tarea { get => tarea; set => tarea = value; }
 
-        public Dev(int estado, string nombre)
+        public Dev(int estado, string nombre, string tarea)
         {
             Estado = estado;
             Nombre = nombre;
+            Tarea = tarea;
         }
 
         public Icon obtenerIcono()

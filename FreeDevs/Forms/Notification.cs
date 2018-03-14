@@ -12,21 +12,20 @@ namespace FreeDevs
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
 
+        public int PANEL_ANCHO              = 300;
+        public int PANEL_ALTO               = 160;
+        public int TAMAÑO_LOGOS             = 22;
+        public int ALTURA_ITEM              = 24;
+        public int TAMAÑO_COLUMNA_NOMBRE    = 400;
+        public int MARGEN_PANEL_X           = 4;
+        public int MARGEN_PANEL_Y           = 80;
+
+        public Font FUENTE_NOMBRES = new Font("Arial", 14, FontStyle.Regular);
+        public Font FUENTE_TAREAS = new Font("Arial", 12, FontStyle.Italic);
+
         public Notification(List<Dev> listado, int duration, int speed, int opacity)
         {
             InitializeComponent();
-
-            //Diseño
-            Size = new Size(250, 130 + 22 * listado.Count);
-            lvDevs.Size = new Size(180 + panelBotones.Height, 22 * listado.Count);
-            panelBotones.Location = new Point(Location.X + 4, Location.Y + 55 + lvDevs.Height);
-            BackColor = Color.Black;
-            lvDevs.Scrollable = false;
-            lvDevs.View = View.Details;
-            btnEstado1.BackColor = SystemColors.ControlDarkDark;
-            btnEstado2.BackColor = SystemColors.ControlDarkDark;
-            btnEstado3.BackColor = SystemColors.ControlDarkDark;
-            btnAjustes.BackgroundImage = Properties.Resources.parametros;
 
             //Parametros
             duration = duration * 1000;
@@ -37,23 +36,33 @@ namespace FreeDevs
 
             //Imagenes
             ImageList iconos = new ImageList();
-            iconos.ImageSize = new Size(20, 20);
+            iconos.ImageSize = new Size(TAMAÑO_LOGOS, TAMAÑO_LOGOS);
             iconos.Images.Add(Properties.Resources.iconoVerde);
             iconos.Images.Add(Properties.Resources.iconoNaranja);
             iconos.Images.Add(Properties.Resources.iconoRojo);
             lvDevs.SmallImageList = iconos;
 
-            //Columna
-            lvDevs.Columns.Add("Nombre", 200);
+            //Columnas
+            lvDevs.Columns.Add("Nombre", TAMAÑO_COLUMNA_NOMBRE);
             lvDevs.HeaderStyle = ColumnHeaderStyle.None;
+
             //Filas
             foreach(Dev dev in listado)
             {
-                lvDevs.Items.Add("    " + dev.Nombre, dev.Estado);
+                ListViewItem Nombre = new ListViewItem("  " + dev.Nombre, dev.Estado);
+                Nombre.Font = FUENTE_NOMBRES;
+                lvDevs.Items.Add(Nombre);
+                if (!dev.Tarea.Equals(""))
+                {
+                    ListViewItem Tarea = new ListViewItem("  " + dev.Tarea);
+                    Tarea.Font = FUENTE_TAREAS;
+                    lvDevs.Items.Add(Tarea);
+                }
             }
 
-            //Nombre & Estado
+            //Datos Usuario
             lblNombre.Text = formInicio.usuario;
+            txtTarea.Text = formInicio.tarea;
             switch (formInicio.estado)
             {
                 case Constantes.ESTADO_LIBRE:
@@ -69,16 +78,35 @@ namespace FreeDevs
                     btnEstado3.BackColor = SystemColors.Highlight;
                     break;
             }
+
+            //Diseño
+            Size = new Size(PANEL_ANCHO, PANEL_ALTO + ALTURA_ITEM * lvDevs.Items.Count);
+            lvDevs.Size = new Size(180 + panelBotones.Height, ALTURA_ITEM * lvDevs.Items.Count);
+            panelBotones.Location = new Point(Location.X + MARGEN_PANEL_X, Location.Y + MARGEN_PANEL_Y + lvDevs.Height);
+            BackColor = Color.Black;
+            lvDevs.Scrollable = false;
+            lvDevs.View = View.Details;
+            btnEstado1.BackColor = SystemColors.ControlDarkDark;
+            btnEstado2.BackColor = SystemColors.ControlDarkDark;
+            btnEstado3.BackColor = SystemColors.ControlDarkDark;
+            btnAjustes.BackgroundImage = Properties.Resources.parametros;
         }
 
         #region Eventos
+
+        private void presionarEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                formInicio.Conexion.actualizarTarea(formInicio.usuario, formInicio.tarea);
+            }
+        }
 
         private void lvDevs_ItemSelectionChanged(object sender, EventArgs e)
         {
             //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
             lvDevs.SelectedItems.Clear();
         }
-
 
         private void btnEstados_Click(object sender, EventArgs e)
         {
@@ -134,12 +162,17 @@ namespace FreeDevs
             Close();
         }
 
-        private void Notification_Mouse_Hover(object sender, EventArgs e)
+        private void txtTarea_TextChanged(object sender, EventArgs e)
         {
             lifeTimer.Stop();
         }
 
-        private void Notification_Mouse_Leave(object sender, EventArgs e)
+        private void PauseTimer(object sender, EventArgs e)
+        {
+            lifeTimer.Stop();
+        }
+
+        private void PlayTimer(object sender, EventArgs e)
         {
             lifeTimer.Start();
         }
@@ -185,5 +218,6 @@ namespace FreeDevs
         }
 
         #endregion
+
     }
 }
