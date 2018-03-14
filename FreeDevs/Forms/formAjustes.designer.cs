@@ -56,7 +56,7 @@ namespace FreeDevs
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 28);
+            this.label1.Size = new System.Drawing.Size(246, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "CONFIGURACION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,7 +79,7 @@ namespace FreeDevs
             this.sbOpacidad.Maximum = 10;
             this.sbOpacidad.Minimum = 2;
             this.sbOpacidad.Name = "sbOpacidad";
-            this.sbOpacidad.Size = new System.Drawing.Size(130, 20);
+            this.sbOpacidad.Size = new System.Drawing.Size(152, 20);
             this.sbOpacidad.TabIndex = 3;
             this.sbOpacidad.Value = 8;
             this.sbOpacidad.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sbOpacidad_Scroll);
@@ -97,7 +97,7 @@ namespace FreeDevs
             this.gbConfMarco.Controls.Add(this.lblConfOpacidad);
             this.gbConfMarco.Location = new System.Drawing.Point(12, 38);
             this.gbConfMarco.Name = "gbConfMarco";
-            this.gbConfMarco.Size = new System.Drawing.Size(228, 226);
+            this.gbConfMarco.Size = new System.Drawing.Size(246, 226);
             this.gbConfMarco.TabIndex = 4;
             this.gbConfMarco.TabStop = false;
             // 
@@ -110,7 +110,7 @@ namespace FreeDevs
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Location = new System.Drawing.Point(9, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(209, 94);
+            this.groupBox2.Size = new System.Drawing.Size(231, 94);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mostrar Desarrolladores";
@@ -120,7 +120,7 @@ namespace FreeDevs
             this.cbConfEstado3.AutoSize = true;
             this.cbConfEstado3.Font = new System.Drawing.Font("Arial", 12F);
             this.cbConfEstado3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.cbConfEstado3.Location = new System.Drawing.Point(15, 63);
+            this.cbConfEstado3.Location = new System.Drawing.Point(26, 63);
             this.cbConfEstado3.Name = "cbConfEstado3";
             this.cbConfEstado3.Size = new System.Drawing.Size(99, 22);
             this.cbConfEstado3.TabIndex = 2;
@@ -132,7 +132,7 @@ namespace FreeDevs
             this.cbConfEstado2.AutoSize = true;
             this.cbConfEstado2.Font = new System.Drawing.Font("Arial", 12F);
             this.cbConfEstado2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.cbConfEstado2.Location = new System.Drawing.Point(15, 44);
+            this.cbConfEstado2.Location = new System.Drawing.Point(26, 44);
             this.cbConfEstado2.Name = "cbConfEstado2";
             this.cbConfEstado2.Size = new System.Drawing.Size(110, 22);
             this.cbConfEstado2.TabIndex = 1;
@@ -144,7 +144,7 @@ namespace FreeDevs
             this.cbConfEstado1.AutoSize = true;
             this.cbConfEstado1.Font = new System.Drawing.Font("Arial", 12F);
             this.cbConfEstado1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.cbConfEstado1.Location = new System.Drawing.Point(15, 25);
+            this.cbConfEstado1.Location = new System.Drawing.Point(26, 25);
             this.cbConfEstado1.Name = "cbConfEstado1";
             this.cbConfEstado1.Size = new System.Drawing.Size(71, 22);
             this.cbConfEstado1.TabIndex = 0;
@@ -155,7 +155,7 @@ namespace FreeDevs
             // 
             this.lblConfDuracion2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfDuracion2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblConfDuracion2.Location = new System.Drawing.Point(145, 22);
+            this.lblConfDuracion2.Location = new System.Drawing.Point(163, 22);
             this.lblConfDuracion2.Name = "lblConfDuracion2";
             this.lblConfDuracion2.Size = new System.Drawing.Size(77, 18);
             this.lblConfDuracion2.TabIndex = 10;
@@ -164,7 +164,7 @@ namespace FreeDevs
             // txtConfDuracion
             // 
             this.txtConfDuracion.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtConfDuracion.Location = new System.Drawing.Point(88, 20);
+            this.txtConfDuracion.Location = new System.Drawing.Point(89, 20);
             this.txtConfDuracion.Maximum = new decimal(new int[] {
             10,
             0,
@@ -177,7 +177,7 @@ namespace FreeDevs
             0});
             this.txtConfDuracion.Name = "txtConfDuracion";
             this.txtConfDuracion.ReadOnly = true;
-            this.txtConfDuracion.Size = new System.Drawing.Size(54, 26);
+            this.txtConfDuracion.Size = new System.Drawing.Size(68, 26);
             this.txtConfDuracion.TabIndex = 9;
             this.txtConfDuracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtConfDuracion.Value = new decimal(new int[] {
@@ -193,7 +193,7 @@ namespace FreeDevs
             this.cbConfVelocidad.FormattingEnabled = true;
             this.cbConfVelocidad.Location = new System.Drawing.Point(88, 51);
             this.cbConfVelocidad.Name = "cbConfVelocidad";
-            this.cbConfVelocidad.Size = new System.Drawing.Size(130, 26);
+            this.cbConfVelocidad.Size = new System.Drawing.Size(152, 26);
             this.cbConfVelocidad.TabIndex = 7;
             // 
             // lblConfDuracion
@@ -227,7 +227,7 @@ namespace FreeDevs
             this.btnConfGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnConfGuardar.Location = new System.Drawing.Point(12, 270);
             this.btnConfGuardar.Name = "btnConfGuardar";
-            this.btnConfGuardar.Size = new System.Drawing.Size(108, 65);
+            this.btnConfGuardar.Size = new System.Drawing.Size(123, 65);
             this.btnConfGuardar.TabIndex = 7;
             this.btnConfGuardar.Text = "Guardar";
             this.btnConfGuardar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -242,9 +242,9 @@ namespace FreeDevs
             this.btnConfCancelar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConfCancelar.Location = new System.Drawing.Point(126, 270);
+            this.btnConfCancelar.Location = new System.Drawing.Point(141, 270);
             this.btnConfCancelar.Name = "btnConfCancelar";
-            this.btnConfCancelar.Size = new System.Drawing.Size(114, 65);
+            this.btnConfCancelar.Size = new System.Drawing.Size(117, 65);
             this.btnConfCancelar.TabIndex = 8;
             this.btnConfCancelar.Text = "Cancelar";
             this.btnConfCancelar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -257,7 +257,7 @@ namespace FreeDevs
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(250, 344);
+            this.ClientSize = new System.Drawing.Size(270, 348);
             this.ControlBox = false;
             this.Controls.Add(this.btnConfCancelar);
             this.Controls.Add(this.btnConfGuardar);

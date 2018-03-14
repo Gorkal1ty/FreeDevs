@@ -61,7 +61,7 @@ namespace FreeDevs
             this.lvDevs.Location = new System.Drawing.Point(9, 75);
             this.lvDevs.MultiSelect = false;
             this.lvDevs.Name = "lvDevs";
-            this.lvDevs.Size = new System.Drawing.Size(279, 67);
+            this.lvDevs.Size = new System.Drawing.Size(257, 67);
             this.lvDevs.TabIndex = 3;
             this.lvDevs.UseCompatibleStateImageBehavior = false;
             this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.lvDevs_ItemSelectionChanged);
@@ -82,7 +82,7 @@ namespace FreeDevs
             this.lblLinea.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lblLinea.Location = new System.Drawing.Point(9, 38);
             this.lblLinea.Name = "lblLinea";
-            this.lblLinea.Size = new System.Drawing.Size(275, 2);
+            this.lblLinea.Size = new System.Drawing.Size(258, 2);
             this.lblLinea.TabIndex = 10;
             // 
             // lblNombre
@@ -103,9 +103,9 @@ namespace FreeDevs
             this.btnEstado2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstado2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnEstado2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEstado2.Location = new System.Drawing.Point(96, 2);
+            this.btnEstado2.Location = new System.Drawing.Point(88, 2);
             this.btnEstado2.Name = "btnEstado2";
-            this.btnEstado2.Size = new System.Drawing.Size(88, 65);
+            this.btnEstado2.Size = new System.Drawing.Size(80, 65);
             this.btnEstado2.TabIndex = 7;
             this.btnEstado2.Text = "Disponible";
             this.btnEstado2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -119,9 +119,9 @@ namespace FreeDevs
             this.btnEstado3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstado3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnEstado3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEstado3.Location = new System.Drawing.Point(190, 2);
+            this.btnEstado3.Location = new System.Drawing.Point(174, 2);
             this.btnEstado3.Name = "btnEstado3";
-            this.btnEstado3.Size = new System.Drawing.Size(88, 65);
+            this.btnEstado3.Size = new System.Drawing.Size(80, 65);
             this.btnEstado3.TabIndex = 8;
             this.btnEstado3.Text = "Ocupado";
             this.btnEstado3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -137,7 +137,7 @@ namespace FreeDevs
             this.btnEstado1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEstado1.Location = new System.Drawing.Point(2, 2);
             this.btnEstado1.Name = "btnEstado1";
-            this.btnEstado1.Size = new System.Drawing.Size(88, 65);
+            this.btnEstado1.Size = new System.Drawing.Size(80, 65);
             this.btnEstado1.TabIndex = 6;
             this.btnEstado1.Text = "Libre";
             this.btnEstado1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -151,13 +151,13 @@ namespace FreeDevs
             this.panelBotones.Controls.Add(this.btnEstado2);
             this.panelBotones.Location = new System.Drawing.Point(7, 185);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(281, 70);
+            this.panelBotones.Size = new System.Drawing.Size(259, 70);
             this.panelBotones.TabIndex = 9;
             // 
             // btnAjustes
             // 
             this.btnAjustes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAjustes.Location = new System.Drawing.Point(261, 7);
+            this.btnAjustes.Location = new System.Drawing.Point(239, 7);
             this.btnAjustes.Name = "btnAjustes";
             this.btnAjustes.Size = new System.Drawing.Size(27, 26);
             this.btnAjustes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -173,10 +173,10 @@ namespace FreeDevs
             this.txtTarea.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTarea.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTarea.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.txtTarea.Location = new System.Drawing.Point(48, 3);
+            this.txtTarea.Location = new System.Drawing.Point(35, 3);
             this.txtTarea.MaxLength = 30;
             this.txtTarea.Name = "txtTarea";
-            this.txtTarea.Size = new System.Drawing.Size(224, 19);
+            this.txtTarea.Size = new System.Drawing.Size(221, 19);
             this.txtTarea.TabIndex = 14;
             this.txtTarea.TextChanged += new System.EventHandler(this.txtTarea_TextChanged);
             this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presionarEnter);
@@ -188,7 +188,7 @@ namespace FreeDevs
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Location = new System.Drawing.Point(9, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(279, 26);
+            this.panel1.Size = new System.Drawing.Size(257, 26);
             this.panel1.TabIndex = 15;
             // 
             // Notification
@@ -197,7 +197,7 @@ namespace FreeDevs
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(300, 1080);
+            this.ClientSize = new System.Drawing.Size(275, 1080);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAjustes);

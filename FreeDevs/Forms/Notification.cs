@@ -8,11 +8,7 @@ namespace FreeDevs
 {
     public partial class Notification : Form
     {
-        private bool _allowFocus;
-        private readonly FormAnimator _animator;
-        private IntPtr _currentForegroundWindow;
-
-        public int PANEL_ANCHO              = 300;
+        public int PANEL_ANCHO              = 275;
         public int PANEL_ALTO               = 160;
         public int TAMAÑO_LOGOS             = 22;
         public int ALTURA_ITEM              = 24;
@@ -23,9 +19,22 @@ namespace FreeDevs
         public Font FUENTE_NOMBRES = new Font("Arial", 14, FontStyle.Regular);
         public Font FUENTE_TAREAS = new Font("Arial", 12, FontStyle.Italic);
 
+        private bool _allowFocus;
+        private readonly FormAnimator _animator;
+        private IntPtr _currentForegroundWindow;
+
         public Notification(List<Dev> listado, int duration, int speed, int opacity)
         {
             InitializeComponent();
+
+            //Diseño
+            BackColor = Color.Black;
+            lvDevs.Scrollable = false;
+            lvDevs.View = View.Details;
+            btnEstado1.BackColor = SystemColors.ControlDarkDark;
+            btnEstado2.BackColor = SystemColors.ControlDarkDark;
+            btnEstado3.BackColor = SystemColors.ControlDarkDark;
+            btnAjustes.BackgroundImage = Properties.Resources.parametros;
 
             //Parametros
             duration = duration * 1000;
@@ -79,17 +88,11 @@ namespace FreeDevs
                     break;
             }
 
-            //Diseño
+            //Ajustes Dinámicos
             Size = new Size(PANEL_ANCHO, PANEL_ALTO + ALTURA_ITEM * lvDevs.Items.Count);
             lvDevs.Size = new Size(180 + panelBotones.Height, ALTURA_ITEM * lvDevs.Items.Count);
             panelBotones.Location = new Point(Location.X + MARGEN_PANEL_X, Location.Y + MARGEN_PANEL_Y + lvDevs.Height);
-            BackColor = Color.Black;
-            lvDevs.Scrollable = false;
-            lvDevs.View = View.Details;
-            btnEstado1.BackColor = SystemColors.ControlDarkDark;
-            btnEstado2.BackColor = SystemColors.ControlDarkDark;
-            btnEstado3.BackColor = SystemColors.ControlDarkDark;
-            btnAjustes.BackgroundImage = Properties.Resources.parametros;
+
         }
 
         #region Eventos
@@ -111,7 +114,6 @@ namespace FreeDevs
         private void btnEstados_Click(object sender, EventArgs e)
         {
             //Actualizar Estado
-
             //TODO: Falta Actualización automática a BBDD
             var boton = (Button)sender;
             switch (boton.Name)
@@ -122,6 +124,7 @@ namespace FreeDevs
                     btnEstado1.BackColor = SystemColors.Highlight;
                     btnEstado2.BackColor = SystemColors.ControlDarkDark;
                     btnEstado3.BackColor = SystemColors.ControlDarkDark;
+                    formInicio.estado = Constantes.ESTADO_LIBRE;
                     break;
                 case "btnEstado2":
                     pbEstado.BackgroundImage = Properties.Resources.iconoNaranja.ToBitmap();
@@ -129,6 +132,7 @@ namespace FreeDevs
                     btnEstado1.BackColor = SystemColors.ControlDarkDark;
                     btnEstado2.BackColor = SystemColors.Highlight;
                     btnEstado3.BackColor = SystemColors.ControlDarkDark;
+                    formInicio.estado = Constantes.ESTADO_DISPONIBLE;
                     break;
                 case "btnEstado3":
                     pbEstado.BackgroundImage = Properties.Resources.iconoRojo.ToBitmap();
@@ -136,6 +140,7 @@ namespace FreeDevs
                     btnEstado1.BackColor = SystemColors.ControlDarkDark;
                     btnEstado2.BackColor = SystemColors.ControlDarkDark;
                     btnEstado3.BackColor = SystemColors.Highlight;
+                    formInicio.estado = Constantes.ESTADO_OCUPADO;
                     break;
             }
         }
