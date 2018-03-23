@@ -28,8 +28,6 @@ namespace FreeDevs
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lifeTimer = new System.Windows.Forms.Timer(this.components);
             this.lvDevs = new System.Windows.Forms.ListView();
             this.pbEstado = new System.Windows.Forms.PictureBox();
             this.lblLinea = new System.Windows.Forms.Label();
@@ -47,10 +45,6 @@ namespace FreeDevs
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lifeTimer
-            // 
-            this.lifeTimer.Tick += new System.EventHandler(this.Click_Cierre);
-            // 
             // lvDevs
             // 
             this.lvDevs.BackColor = System.Drawing.Color.Black;
@@ -64,7 +58,7 @@ namespace FreeDevs
             this.lvDevs.Size = new System.Drawing.Size(257, 67);
             this.lvDevs.TabIndex = 3;
             this.lvDevs.UseCompatibleStateImageBehavior = false;
-            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.lvDevs_ItemSelectionChanged);
+            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.Click_Cierre);
             // 
             // pbEstado
             // 
@@ -95,6 +89,7 @@ namespace FreeDevs
             this.lblNombre.Size = new System.Drawing.Size(159, 24);
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Apellido";
+            this.lblNombre.Click += new System.EventHandler(this.Click_Cierre);
             // 
             // btnEstado2
             // 
@@ -178,7 +173,6 @@ namespace FreeDevs
             this.txtTarea.Name = "txtTarea";
             this.txtTarea.Size = new System.Drawing.Size(221, 19);
             this.txtTarea.TabIndex = 14;
-            this.txtTarea.TextChanged += new System.EventHandler(this.txtTarea_TextChanged);
             this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presionarEnter);
             // 
             // panel1
@@ -216,8 +210,6 @@ namespace FreeDevs
             this.Load += new System.EventHandler(this.Notification_Load);
             this.Shown += new System.EventHandler(this.Notification_Shown);
             this.Click += new System.EventHandler(this.Click_Cierre);
-            this.MouseLeave += new System.EventHandler(this.PlayTimer);
-            this.MouseHover += new System.EventHandler(this.PauseTimer);
             ((System.ComponentModel.ISupportInitialize)(this.pbEstado)).EndInit();
             this.panelBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnAjustes)).EndInit();
@@ -229,8 +221,6 @@ namespace FreeDevs
         }
 
         #endregion
-
-        public System.Windows.Forms.Timer lifeTimer;
         private System.Windows.Forms.ListView lvDevs;
         private System.Windows.Forms.PictureBox pbEstado;
         private System.Windows.Forms.Label lblLinea;

@@ -23,7 +23,7 @@ namespace FreeDevs
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
 
-        public Notification(List<Dev> listado, int duration, int speed, int opacity)
+        public Notification(List<Dev> listado, int speed, int opacity)
         {
             InitializeComponent();
 
@@ -37,8 +37,6 @@ namespace FreeDevs
             btnAjustes.BackgroundImage = Properties.Resources.parametros;
 
             //Parametros
-            duration = duration * 1000;
-            lifeTimer.Interval = duration;
             Opacity = opacity * 0.1;
             _animator = new FormAnimator(this, FormAnimator.AnimationMethod.Slide, FormAnimator.AnimationDirection.Up, 500 / speed);
             Region = Region.FromHrgn(NativeMethods.CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
@@ -105,12 +103,6 @@ namespace FreeDevs
             }
         }
 
-        private void lvDevs_ItemSelectionChanged(object sender, EventArgs e)
-        {
-            //Todo: Investigar selección usuario >> Abrir chat hangouts #PremiumBusinessOverpowerUsers :P
-            lvDevs.SelectedItems.Clear();
-        }
-
         private void btnEstados_Click(object sender, EventArgs e)
         {
             //Actualizar Estado
@@ -167,21 +159,6 @@ namespace FreeDevs
             Close();
         }
 
-        private void txtTarea_TextChanged(object sender, EventArgs e)
-        {
-            lifeTimer.Stop();
-        }
-
-        private void PauseTimer(object sender, EventArgs e)
-        {
-            lifeTimer.Stop();
-        }
-
-        private void PlayTimer(object sender, EventArgs e)
-        {
-            lifeTimer.Start();
-        }
-
         #endregion
 
         #region Funciones Integradas: No Tocar
@@ -200,8 +177,6 @@ namespace FreeDevs
             Location = new Point(
                 Screen.PrimaryScreen.WorkingArea.Width - Width,
                 Screen.PrimaryScreen.WorkingArea.Height - Height);
-
-            lifeTimer.Start();
         }
         private void Notification_Activated(object sender, EventArgs e)
         {

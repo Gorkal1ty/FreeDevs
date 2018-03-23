@@ -37,7 +37,6 @@ namespace FreeDevs
             //Cargar config. actual
             cbConfVelocidad.SelectedIndex = formInicio.velocidad-1;
             sbOpacidad.Value = formInicio.opacidad;
-            txtConfDuracion.Value = formInicio.duracion;
 
             if (formInicio.visualizacion.Contains(Constantes.VISUALIZAR_LIBRE))
                 cbConfEstado1.Checked = true;
@@ -120,12 +119,10 @@ namespace FreeDevs
             if (cbConfEstado3.Checked)
                 visualizacionNueva += Constantes.VISUALIZAR_OCUPADO;
             //Guardar ajustes actuales
-            formInicio.duracion = Int32.Parse(txtConfDuracion.Text); 
             formInicio.velocidad = cbConfVelocidad.SelectedIndex + 1; 
             formInicio.opacidad = sbOpacidad.Value;
             formInicio.visualizacion = visualizacionNueva;
             //Guardar Settings
-            Properties.Settings.Default.Duracion = Int32.Parse(txtConfDuracion.Text);
             Properties.Settings.Default.Velocidad = cbConfVelocidad.SelectedIndex + 1;
             Properties.Settings.Default.Opacidad = sbOpacidad.Value;
             Properties.Settings.Default.Visualizacion = visualizacionNueva;

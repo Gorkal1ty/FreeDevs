@@ -24,7 +24,6 @@ namespace FreeDevs
 
         //Parametros accesibles desde app y fichero configuracion
         public static string usuario = Properties.Settings.Default.Usuario;
-        public static int duracion = Properties.Settings.Default.Duracion;
         public static int velocidad = Properties.Settings.Default.Velocidad;
         public static int opacidad = Properties.Settings.Default.Opacidad;
         public static string visualizacion = Properties.Settings.Default.Visualizacion;
@@ -79,7 +78,7 @@ namespace FreeDevs
             if (mouse.Button.Equals(MouseButtons.Left))
             {
                 //Evitar duplicar la ventana de notificacion
-                if (notificacion == null || !notificacion.lifeTimer.Enabled)
+                if (notificacion == null || !notificacion.Visible)
                 {
                     //Esconder la ventana de ajustes en caso de encontrarse abierta
                     if (ajustes != null && ajustes.Visible)
@@ -119,7 +118,7 @@ namespace FreeDevs
                 //Actualizar el listado
                 cargarEmpleados();
                 //Generar la notificacion
-                notificacion = new Notification(listado, duracion, velocidad, opacidad);
+                notificacion = new Notification(listado, velocidad, opacidad);
                 notificacion.Show();
             }
             catch (Exception ex)
