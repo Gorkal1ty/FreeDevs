@@ -50,19 +50,11 @@ namespace FreeDevs
                 cbConfEstado3.Checked = true;
             else
                 cbConfEstado3.Checked = false;
+            if (formInicio.visualizacion.Contains(Constantes.VISUALIZAR_AUSENTE))
+                cbConfEstado4.Checked = true;
+            else
+                cbConfEstado4.Checked = false;
         }
-
-        #region Metodos
-
-        public new void Show()
-        {
-            // Determine the current foreground window so it can be reactivated each time this form tries to get the focus
-            _currentForegroundWindow = NativeMethods.GetForegroundWindow();
-
-            base.Show();
-        }
-
-        #endregion 
 
         #region Eventos
 
@@ -108,6 +100,14 @@ namespace FreeDevs
 
         #region Metodos
 
+        public new void Show()
+        {
+            // Determine the current foreground window so it can be reactivated each time this form tries to get the focus
+            _currentForegroundWindow = NativeMethods.GetForegroundWindow();
+
+            base.Show();
+        }
+
         private void guardarAjustes()
         {
             string visualizacionNueva = "";
@@ -118,6 +118,8 @@ namespace FreeDevs
                 visualizacionNueva += Constantes.VISUALIZAR_DISPONIBLE;
             if (cbConfEstado3.Checked)
                 visualizacionNueva += Constantes.VISUALIZAR_OCUPADO;
+            if (cbConfEstado4.Checked)
+                visualizacionNueva += Constantes.VISUALIZAR_AUSENTE;
             //Guardar ajustes actuales
             formInicio.velocidad = cbConfVelocidad.SelectedIndex + 1; 
             formInicio.opacidad = sbOpacidad.Value;

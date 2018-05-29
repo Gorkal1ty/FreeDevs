@@ -30,7 +30,6 @@ D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.pdb
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formInicio.resources
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\bin\Debug\FreeDevs.exe.config
 D:\Proyectos\FreeDevsNotifier\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formAjustes.resources
-D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csprojResolveAssemblyReference.cache
 D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formAjustes.resources
 D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.Notification.resources
 D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.formInicio.resources
@@ -60,3 +59,4 @@ D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CoreCompileInput
 D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CopyComplete
 D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.exe
 D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.pdb
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csprojAssemblyReference.cache

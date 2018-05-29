@@ -19,6 +19,8 @@ namespace FreeDevs
         public Font FUENTE_NOMBRES = new Font("Arial", 14, FontStyle.Regular);
         public Font FUENTE_TAREAS = new Font("Arial", 12, FontStyle.Italic);
 
+        public Color COLOR_AUSENTE = Color.Gray;
+
         private bool _allowFocus;
         private readonly FormAnimator _animator;
         private IntPtr _currentForegroundWindow;
@@ -47,6 +49,7 @@ namespace FreeDevs
             iconos.Images.Add(Properties.Resources.iconoVerde);
             iconos.Images.Add(Properties.Resources.iconoNaranja);
             iconos.Images.Add(Properties.Resources.iconoRojo);
+            iconos.Images.Add(Properties.Resources.iconoAusente);
             lvDevs.SmallImageList = iconos;
 
             //Columnas
@@ -56,13 +59,17 @@ namespace FreeDevs
             //Filas
             foreach(Dev dev in listado)
             {
-                ListViewItem Nombre = new ListViewItem("  " + dev.Nombre, dev.Estado);
+                ListViewItem Nombre = new ListViewItem("  " + dev.Nombre, dev.obtenerEstado());
                 Nombre.Font = FUENTE_NOMBRES;
+                if (dev.Ausente)
+                    Nombre.ForeColor = COLOR_AUSENTE;
                 lvDevs.Items.Add(Nombre);
                 if (!dev.Tarea.Equals(""))
                 {
                     ListViewItem Tarea = new ListViewItem("  " + dev.Tarea);
                     Tarea.Font = FUENTE_TAREAS;
+                    if (dev.Ausente)
+                        Tarea.ForeColor = COLOR_AUSENTE;
                     lvDevs.Items.Add(Tarea);
                 }
             }
@@ -99,14 +106,30 @@ namespace FreeDevs
         {
             if (e.KeyCode == Keys.Enter)
             {
-                formInicio.Conexion.actualizarTarea(formInicio.usuario, formInicio.tarea);
+                formInicio.Conexion.actualizarTarea(formInicio.usuario, txtTarea.Text);
+                if (txtTarea.Text.Equals(""))
+                {
+                    txtTarea.Text = "Introduce aquí tu tarea";
+                    panelBotones.Focus();
+                }
+                else
+                {
+                    formInicio.tarea = txtTarea.Text;
+                }
+            }
+        }
+
+        private void clickTarea(object sender, EventArgs e)
+        {
+            if (txtTarea.Text.Equals("Introduce aquí tu tarea"))
+            {
+                txtTarea.Clear();
             }
         }
 
         private void btnEstados_Click(object sender, EventArgs e)
         {
             //Actualizar Estado
-            //TODO: Falta Actualización automática a BBDD
             var boton = (Button)sender;
             switch (boton.Name)
             {
@@ -135,13 +158,15 @@ namespace FreeDevs
                     formInicio.estado = Constantes.ESTADO_OCUPADO;
                     break;
             }
+            //Actualizar BBDD
+            formInicio.Conexion.actualizarEstado(formInicio.usuario, formInicio.estado);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
         {
-            formAjustes ajustes = new formAjustes();
+            formInicio.ajustes = new formAjustes();
             Close();
-            ajustes.Show();
+            formInicio.ajustes.Show();
         }
 
         private void btnAjustes_Hover(object sender, EventArgs e)

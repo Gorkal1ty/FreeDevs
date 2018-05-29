@@ -58,7 +58,7 @@ namespace FreeDevs
             this.lvDevs.Size = new System.Drawing.Size(257, 67);
             this.lvDevs.TabIndex = 3;
             this.lvDevs.UseCompatibleStateImageBehavior = false;
-            this.lvDevs.SelectedIndexChanged += new System.EventHandler(this.Click_Cierre);
+            this.lvDevs.Click += new System.EventHandler(this.Click_Cierre);
             // 
             // pbEstado
             // 
@@ -174,6 +174,7 @@ namespace FreeDevs
             this.txtTarea.Size = new System.Drawing.Size(221, 19);
             this.txtTarea.TabIndex = 14;
             this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presionarEnter);
+            this.txtTarea.Click += new System.EventHandler(this.clickTarea);
             // 
             // panel1
             // 

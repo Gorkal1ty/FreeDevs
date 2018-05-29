@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include="Clases\Constantes.cs" />
     <Compile Include="Clases\Endpoints.cs" />
-    <Compile Include="Controlador\ConexionSQL.cs" />
+    <Compile Include="Controlador\ConectorSQL.cs" />
     <Compile Include="Entidades\Dev.cs" />
     <Compile Include="Clases\FormAnimator.cs" />
     <Compile Include="Clases\NativeMethods.cs" />
@@ -131,6 +131,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <None Include="Imagenes\iconoAusente.ico" />
     <Content Include="Imagenes\iconoNaranja.ico" />
     <Content Include="Imagenes\iconoRojo.ico" />
     <Content Include="Imagenes\iconoVerde.ico" />

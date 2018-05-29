@@ -83,6 +83,16 @@ namespace FreeDevs.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
+        internal static System.Drawing.Icon iconoAusente {
+            get {
+                object obj = ResourceManager.GetObject("iconoAusente", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
         internal static System.Drawing.Icon iconoNaranja {
             get {
                 object obj = ResourceManager.GetObject("iconoNaranja", resourceCulture);

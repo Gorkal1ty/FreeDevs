@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Gorka Barron</Value>
     </Setting>
     <Setting Name="Visualizacion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">012</Value>
+      <Value Profile="(Default)">0123</Value>
     </Setting>
   </Settings>
 </SettingsFile>

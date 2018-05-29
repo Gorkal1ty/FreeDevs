@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using FreeDevs.Clases;
 
 namespace FreeDevs.Controlador
 {
-    class ConexionSQL
+    class ConectorSQL
     {
         //Parametros
         private string servidor;
@@ -16,7 +17,7 @@ namespace FreeDevs.Controlador
         //Variables
         private MySqlConnection conexion;
 
-        public ConexionSQL(string server, string db, string user, string password)
+        public ConectorSQL(string server, string db, string user, string password)
         {
             servidor = server;
             bbdd = db;
@@ -37,7 +38,7 @@ namespace FreeDevs.Controlador
         {
             Console.WriteLine("[INFO] ObtenerEmpleados()");
 
-            string query = "SELECT estado, nombre, tarea FROM empleados";
+            string query = "SELECT estado, nombre, tarea, ausente FROM empleados";
 
             List<Dev> empleados = new List<Dev>();
 
@@ -51,10 +52,11 @@ namespace FreeDevs.Controlador
                     int estado      = dataReader.GetInt32("estado");
                     string nombre   = dataReader["nombre"] + "";
                     string tarea    = dataReader["tarea"] + "";
+                    int ausente     = dataReader.GetInt32("ausente");
 
-                    Dev developer = new Dev(estado, nombre, tarea);
+                    Dev developer = new Dev(estado, nombre, tarea, ausente);
                     Console.Write("[ConexionSQL] ObtenerEmpleados: ");
-                    Console.Write(developer.Nombre + " - " + developer.Estado + " " + developer.Tarea);
+                    Console.Write(developer.Nombre + " - " + developer.Estado + " " + developer.Tarea + " " + developer.Ausente);
                     empleados.Add(developer);
                 }
 
@@ -70,9 +72,9 @@ namespace FreeDevs.Controlador
             }
         }
 
-        public void actualizarEmpleado(string nombre, string tarea, bool estado)
+        public void actualizarEstado(string nombre, int estado)
         {
-            String query = "UPDATE empleados SET estado = '" + estado + ", tarea = '" + tarea + " WHERE nombre = '" + nombre + "'";
+            String query = "UPDATE empleados SET estado = '" + estado + "' WHERE nombre = '" + nombre + "'";
 
             if (abrirConexion() == true)
             {
@@ -84,7 +86,23 @@ namespace FreeDevs.Controlador
 
         public void actualizarTarea(string nombre, string tarea)
         {
-            String query = "UPDATE empleados SET tarea = '" + tarea + " WHERE nombre = '" + nombre + "'";
+            String query = "UPDATE empleados SET tarea = '" + tarea + "' WHERE nombre = '" + nombre + "'";
+
+            if (abrirConexion() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.ExecuteNonQuery();
+                cerrarConexion();
+            }
+        }
+
+        public void establecerAusente(string nombre, bool ausente)
+        {
+            String query = "";
+            if (ausente)
+                query = "UPDATE empleados SET ausente = " + Constantes.AUSENTE_SI + " WHERE nombre = '" + nombre + "'";
+            else
+                query = "UPDATE empleados SET ausente = " + Constantes.AUSENTE_NO + " WHERE nombre = '" + nombre + "'";
 
             if (abrirConexion() == true)
             {

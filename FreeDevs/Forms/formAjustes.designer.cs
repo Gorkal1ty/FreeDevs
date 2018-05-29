@@ -33,19 +33,16 @@ namespace FreeDevs
             this.sbOpacidad = new System.Windows.Forms.HScrollBar();
             this.gbConfMarco = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbConfEstado4 = new System.Windows.Forms.CheckBox();
             this.cbConfEstado3 = new System.Windows.Forms.CheckBox();
             this.cbConfEstado2 = new System.Windows.Forms.CheckBox();
             this.cbConfEstado1 = new System.Windows.Forms.CheckBox();
-            this.lblConfDuracion2 = new System.Windows.Forms.Label();
-            this.txtConfDuracion = new System.Windows.Forms.NumericUpDown();
             this.cbConfVelocidad = new System.Windows.Forms.ComboBox();
-            this.lblConfDuracion = new System.Windows.Forms.Label();
             this.lblConfVelocidad = new System.Windows.Forms.Label();
             this.btnConfGuardar = new System.Windows.Forms.Button();
             this.btnConfCancelar = new System.Windows.Forms.Button();
             this.gbConfMarco.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfDuracion)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +53,7 @@ namespace FreeDevs
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 28);
+            this.label1.Size = new System.Drawing.Size(254, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "CONFIGURACION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,7 +63,7 @@ namespace FreeDevs
             this.lblConfOpacidad.AutoSize = true;
             this.lblConfOpacidad.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfOpacidad.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblConfOpacidad.Location = new System.Drawing.Point(6, 187);
+            this.lblConfOpacidad.Location = new System.Drawing.Point(6, 184);
             this.lblConfOpacidad.Name = "lblConfOpacidad";
             this.lblConfOpacidad.Size = new System.Drawing.Size(77, 18);
             this.lblConfOpacidad.TabIndex = 1;
@@ -75,7 +72,7 @@ namespace FreeDevs
             // sbOpacidad
             // 
             this.sbOpacidad.LargeChange = 1;
-            this.sbOpacidad.Location = new System.Drawing.Point(88, 187);
+            this.sbOpacidad.Location = new System.Drawing.Point(88, 184);
             this.sbOpacidad.Maximum = 10;
             this.sbOpacidad.Minimum = 2;
             this.sbOpacidad.Name = "sbOpacidad";
@@ -88,32 +85,42 @@ namespace FreeDevs
             // 
             this.gbConfMarco.BackColor = System.Drawing.Color.Transparent;
             this.gbConfMarco.Controls.Add(this.groupBox2);
-            this.gbConfMarco.Controls.Add(this.lblConfDuracion2);
-            this.gbConfMarco.Controls.Add(this.txtConfDuracion);
             this.gbConfMarco.Controls.Add(this.cbConfVelocidad);
-            this.gbConfMarco.Controls.Add(this.lblConfDuracion);
             this.gbConfMarco.Controls.Add(this.lblConfVelocidad);
             this.gbConfMarco.Controls.Add(this.sbOpacidad);
             this.gbConfMarco.Controls.Add(this.lblConfOpacidad);
             this.gbConfMarco.Location = new System.Drawing.Point(12, 38);
             this.gbConfMarco.Name = "gbConfMarco";
-            this.gbConfMarco.Size = new System.Drawing.Size(246, 226);
+            this.gbConfMarco.Size = new System.Drawing.Size(254, 216);
             this.gbConfMarco.TabIndex = 4;
             this.gbConfMarco.TabStop = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbConfEstado4);
             this.groupBox2.Controls.Add(this.cbConfEstado3);
             this.groupBox2.Controls.Add(this.cbConfEstado2);
             this.groupBox2.Controls.Add(this.cbConfEstado1);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox2.Location = new System.Drawing.Point(9, 83);
+            this.groupBox2.Location = new System.Drawing.Point(9, 51);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(231, 94);
+            this.groupBox2.Size = new System.Drawing.Size(231, 115);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mostrar Desarrolladores";
+            // 
+            // cbConfEstado4
+            // 
+            this.cbConfEstado4.AutoSize = true;
+            this.cbConfEstado4.Font = new System.Drawing.Font("Arial", 12F);
+            this.cbConfEstado4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.cbConfEstado4.Location = new System.Drawing.Point(26, 82);
+            this.cbConfEstado4.Name = "cbConfEstado4";
+            this.cbConfEstado4.Size = new System.Drawing.Size(92, 22);
+            this.cbConfEstado4.TabIndex = 3;
+            this.cbConfEstado4.Text = "Ausentes";
+            this.cbConfEstado4.UseVisualStyleBackColor = true;
             // 
             // cbConfEstado3
             // 
@@ -151,67 +158,22 @@ namespace FreeDevs
             this.cbConfEstado1.Text = "Libres";
             this.cbConfEstado1.UseVisualStyleBackColor = true;
             // 
-            // lblConfDuracion2
-            // 
-            this.lblConfDuracion2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfDuracion2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblConfDuracion2.Location = new System.Drawing.Point(163, 22);
-            this.lblConfDuracion2.Name = "lblConfDuracion2";
-            this.lblConfDuracion2.Size = new System.Drawing.Size(77, 18);
-            this.lblConfDuracion2.TabIndex = 10;
-            this.lblConfDuracion2.Text = "segundos";
-            // 
-            // txtConfDuracion
-            // 
-            this.txtConfDuracion.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtConfDuracion.Location = new System.Drawing.Point(89, 20);
-            this.txtConfDuracion.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.txtConfDuracion.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.txtConfDuracion.Name = "txtConfDuracion";
-            this.txtConfDuracion.ReadOnly = true;
-            this.txtConfDuracion.Size = new System.Drawing.Size(68, 26);
-            this.txtConfDuracion.TabIndex = 9;
-            this.txtConfDuracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtConfDuracion.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
             // cbConfVelocidad
             // 
             this.cbConfVelocidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConfVelocidad.Font = new System.Drawing.Font("Arial", 12F);
             this.cbConfVelocidad.FormattingEnabled = true;
-            this.cbConfVelocidad.Location = new System.Drawing.Point(88, 51);
+            this.cbConfVelocidad.Location = new System.Drawing.Point(88, 19);
             this.cbConfVelocidad.Name = "cbConfVelocidad";
             this.cbConfVelocidad.Size = new System.Drawing.Size(152, 26);
             this.cbConfVelocidad.TabIndex = 7;
-            // 
-            // lblConfDuracion
-            // 
-            this.lblConfDuracion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfDuracion.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblConfDuracion.Location = new System.Drawing.Point(6, 22);
-            this.lblConfDuracion.Name = "lblConfDuracion";
-            this.lblConfDuracion.Size = new System.Drawing.Size(77, 18);
-            this.lblConfDuracion.TabIndex = 5;
-            this.lblConfDuracion.Text = "Duracion";
             // 
             // lblConfVelocidad
             // 
             this.lblConfVelocidad.AutoSize = true;
             this.lblConfVelocidad.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfVelocidad.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblConfVelocidad.Location = new System.Drawing.Point(5, 54);
+            this.lblConfVelocidad.Location = new System.Drawing.Point(5, 22);
             this.lblConfVelocidad.Name = "lblConfVelocidad";
             this.lblConfVelocidad.Size = new System.Drawing.Size(78, 18);
             this.lblConfVelocidad.TabIndex = 4;
@@ -225,7 +187,7 @@ namespace FreeDevs
             this.btnConfGuardar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConfGuardar.Location = new System.Drawing.Point(12, 270);
+            this.btnConfGuardar.Location = new System.Drawing.Point(12, 260);
             this.btnConfGuardar.Name = "btnConfGuardar";
             this.btnConfGuardar.Size = new System.Drawing.Size(123, 65);
             this.btnConfGuardar.TabIndex = 7;
@@ -242,9 +204,9 @@ namespace FreeDevs
             this.btnConfCancelar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConfCancelar.Location = new System.Drawing.Point(141, 270);
+            this.btnConfCancelar.Location = new System.Drawing.Point(141, 260);
             this.btnConfCancelar.Name = "btnConfCancelar";
-            this.btnConfCancelar.Size = new System.Drawing.Size(117, 65);
+            this.btnConfCancelar.Size = new System.Drawing.Size(125, 65);
             this.btnConfCancelar.TabIndex = 8;
             this.btnConfCancelar.Text = "Cancelar";
             this.btnConfCancelar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -257,7 +219,7 @@ namespace FreeDevs
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(270, 348);
+            this.ClientSize = new System.Drawing.Size(278, 337);
             this.ControlBox = false;
             this.Controls.Add(this.btnConfCancelar);
             this.Controls.Add(this.btnConfGuardar);
@@ -276,7 +238,6 @@ namespace FreeDevs
             this.gbConfMarco.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfDuracion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,15 +249,13 @@ namespace FreeDevs
         private System.Windows.Forms.HScrollBar sbOpacidad;
         private System.Windows.Forms.GroupBox gbConfMarco;
         private System.Windows.Forms.ComboBox cbConfVelocidad;
-        private System.Windows.Forms.Label lblConfDuracion;
         private System.Windows.Forms.Label lblConfVelocidad;
-        private System.Windows.Forms.NumericUpDown txtConfDuracion;
-        private System.Windows.Forms.Label lblConfDuracion2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox cbConfEstado3;
         private System.Windows.Forms.CheckBox cbConfEstado2;
         private System.Windows.Forms.CheckBox cbConfEstado1;
         private System.Windows.Forms.Button btnConfGuardar;
         private System.Windows.Forms.Button btnConfCancelar;
+        private System.Windows.Forms.CheckBox cbConfEstado4;
     }
 }
