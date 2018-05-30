@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FreeDevs.Clases;
 using FreeDevs.Controlador;
+using IWshRuntimeLibrary;
 
 namespace FreeDevs
 {
@@ -48,10 +49,37 @@ namespace FreeDevs
 
         private void formInicio_Load(object sender, EventArgs e)
         {
-            Hide();
 
             log.escribirLog(Constantes.LOG_INFO, " ************ Inicio Aplicación ************************ ");
-            
+
+            try
+            {
+                //Generar acceso directo para la ejecución automática
+                string startupFolder = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+                string shortcutAddress = startupFolder + @"\FreeDevs.lnk";
+
+                if (!System.IO.File.Exists(shortcutAddress))
+                {
+                    WshShell shell = new WshShell();
+
+                    IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+                    shortcut.Description = "Acceso para inicio automático de FreeDevs. Prohibido eliminar.";
+                    shortcut.WorkingDirectory = Application.StartupPath;
+                    shortcut.TargetPath = Application.ExecutablePath;
+                    shortcut.Save();
+
+                    log.escribirLog(Constantes.LOG_INFO, "Acceso directo de Windows generado.");
+                }
+            }
+            catch (Exception)
+            {
+                log.escribirLog(Constantes.LOG_ERROR, "No se ha podido generar el acceso en Startup de Windows.");
+                throw;
+            }
+
+            //Esconder form
+            Hide();
+
             //Carga Inicial
             cargarEmpleados();
 
@@ -71,6 +99,10 @@ namespace FreeDevs
             MenuItem mostrar = new MenuItem("Mostrar", Mostrar_Click);
             MenuItem ajustes = new MenuItem("Ajustes", Ajustes_Click);
             MenuItem cerrar = new MenuItem("Cerrar FreeDevs", Cerrar_Click);
+
+            //Deshabilitar cerrar
+            cerrar.Enabled = false;
+
             menu.MenuItems.Add(mostrar);
             menu.MenuItems.Add(ajustes);
             menu.MenuItems.Add("-");
@@ -106,7 +138,7 @@ namespace FreeDevs
             //Esconder la notificacion si se encuentra visible
             if (notificacion!=null && notificacion.Visible)
                 notificacion.Close();
-            if (!ajustes.Visible) {
+            if (ajustes==null || !ajustes.Visible) {
                 ajustes = new formAjustes();
                 ajustes.Show();
             }
@@ -128,10 +160,13 @@ namespace FreeDevs
         }
 
         //Evento para capturar el cierre de sesión / apagado (applicationExit no se dispara)
+
         private static int WM_QUERYENDSESSION = 0x11;
+        private static int WM_CLOSE = 0x0010;
+
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == WM_QUERYENDSESSION)
+            if (m.Msg == WM_QUERYENDSESSION || m.Msg == WM_CLOSE)
             {
                 Conexion.establecerAusente(usuario, true);
                 log.escribirLog(Constantes.LOG_INFO, " ************ Cierre Aplicación ************************ ");

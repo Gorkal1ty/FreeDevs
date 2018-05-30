@@ -60,3 +60,5 @@ D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.csproj.CopyComplete
 D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.exe
 D:\Proyectos\FreeDevs_OK\FreeDevs\obj\x86\Debug\FreeDevs.pdb
 D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csprojAssemblyReference.cache
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\Interop.IWshRuntimeLibrary.dll
+D:\Proyectos\FreeDevs\FreeDevs\obj\x86\Debug\FreeDevs.csproj.ResolveComReference.cache
