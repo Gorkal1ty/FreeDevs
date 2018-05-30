@@ -16,6 +16,7 @@ namespace FreeDevs.Controlador
 
         //Variables
         private MySqlConnection conexion;
+        private Logger log = new Logger();
 
         public ConectorSQL(string server, string db, string user, string password)
         {
@@ -34,9 +35,9 @@ namespace FreeDevs.Controlador
 
         #region Metodos
 
-        public List<Dev> ObtenerEmpleados()
+        public List<Dev> obtenerEmpleados()
         {
-            Console.WriteLine("[INFO] ObtenerEmpleados()");
+            log.escribirLog(Constantes.LOG_INFO, "[ConectorSQL] obtenerEmpleados()");
 
             string query = "SELECT estado, nombre, tarea, ausente FROM empleados";
 
@@ -55,25 +56,21 @@ namespace FreeDevs.Controlador
                     int ausente     = dataReader.GetInt32("ausente");
 
                     Dev developer = new Dev(estado, nombre, tarea, ausente);
-                    Console.Write("[ConexionSQL] ObtenerEmpleados: ");
-                    Console.Write(developer.Nombre + " - " + developer.Estado + " " + developer.Tarea + " " + developer.Ausente);
+                    //log.escribirLog(Constantes.LOG_TABULADO, developer.Nombre + ": " + developer.Estado + " (" + developer.Tarea + ") = " + developer.Ausente);
                     empleados.Add(developer);
                 }
 
                 dataReader.Close();
                 cerrarConexion();
+            }
 
-                return empleados;
-            }
-            else
-            {
-                Console.WriteLine("No ha sido posible conectarse con la base de datos.");
-                return empleados;
-            }
+            return empleados;
         }
 
         public void actualizarEstado(string nombre, int estado)
         {
+            log.escribirLog(Constantes.LOG_INFO, "[ConectorSQL] actualizarEstado (" + nombre + ", " + estado + ")");
+
             String query = "UPDATE empleados SET estado = '" + estado + "' WHERE nombre = '" + nombre + "'";
 
             if (abrirConexion() == true)
@@ -86,6 +83,8 @@ namespace FreeDevs.Controlador
 
         public void actualizarTarea(string nombre, string tarea)
         {
+            log.escribirLog(Constantes.LOG_INFO, "[ConectorSQL] actualizarTarea (" + nombre + ", " + tarea + ")");
+
             String query = "UPDATE empleados SET tarea = '" + tarea + "' WHERE nombre = '" + nombre + "'";
 
             if (abrirConexion() == true)
@@ -98,6 +97,8 @@ namespace FreeDevs.Controlador
 
         public void establecerAusente(string nombre, bool ausente)
         {
+            log.escribirLog(Constantes.LOG_INFO, "[ConectorSQL] establecerAusente (" + nombre + ", " + ausente.ToString() + ")");
+
             String query = "";
             if (ausente)
                 query = "UPDATE empleados SET ausente = " + Constantes.AUSENTE_SI + " WHERE nombre = '" + nombre + "'";
@@ -113,7 +114,7 @@ namespace FreeDevs.Controlador
         }
 
         /*
-        public void InsertarEmpleado(string nombre)
+        public void insertarEmpleado(string nombre)
         {
             String query = "insert into empleados (nombre) values ('" + nombre + "'";
 
@@ -131,28 +132,32 @@ namespace FreeDevs.Controlador
         #region Utilidades
 
         private bool abrirConexion()
+        {
+            try
             {
-                try
-                {
-                    conexion.Open();
-                    return true;
-                }
-                catch (MySqlException e)
-                {
-                    MessageBox.Show("Imposible conectar con la BBDD", "Error Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    switch (e.Number)
-                    {
-                        case 0:
-                        case 1042:
-                            Console.Write("Invalid username/password, please try again");
-                            break;
-                        case 1045:
-                            Console.Write("Invalid username/password, please try again");
-                            break;
-                    }
-                    return false;
-                }
+                conexion.Open();
+                return true;
             }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Imposible conectar con la BBDD", "Error Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.escribirLog(Constantes.LOG_ERROR, "[ConectorSQL] No ha sido posible conectarse con la base de datos.");
+
+                switch (e.Number)
+                {
+                    case 0:
+                    case 1042:
+                        log.escribirLog(Constantes.LOG_TABULADO, "1042: Invalid username/password");
+                        break;
+                    case 1045:
+                        log.escribirLog(Constantes.LOG_TABULADO, "1045: Invalid username/password");
+                        break;
+                }
+
+                Application.Exit();
+                return false;
+            }
+        }
 
         private bool cerrarConexion()
             {

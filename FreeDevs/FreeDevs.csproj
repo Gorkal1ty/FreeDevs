@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Clases\Constantes.cs" />
     <Compile Include="Clases\Endpoints.cs" />
+    <Compile Include="Clases\Logger.cs" />
     <Compile Include="Controlador\ConectorSQL.cs" />
     <Compile Include="Entidades\Dev.cs" />
     <Compile Include="Clases\FormAnimator.cs" />

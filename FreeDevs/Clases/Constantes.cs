@@ -13,5 +13,10 @@
 
         public const int AUSENTE_SI = 1;
         public const int AUSENTE_NO = 0;
+
+        public const int LOG_INFO   = 1;
+        public const int LOG_ERROR  = 2;
+        public const int LOG_TABULADO = 3;
+        public const int LOG_MAXLONG  = 500;
     }
 }

@@ -20,7 +20,9 @@ namespace FreeDevs
         public static NotifyIcon icono = new NotifyIcon();
         private static List<Dev> devs = new List<Dev>();
         public static List<Dev> listado = new List<Dev>();
+
         private ContextMenu menu = new ContextMenu();
+        private Logger log = new Logger();
 
         //Parametros accesibles desde app y fichero configuracion
         public static string usuario = Properties.Settings.Default.Usuario;
@@ -48,6 +50,8 @@ namespace FreeDevs
         {
             Hide();
 
+            log.escribirLog(Constantes.LOG_INFO, " ************ Inicio Aplicación ************************ ");
+            
             //Carga Inicial
             cargarEmpleados();
 
@@ -120,6 +124,7 @@ namespace FreeDevs
         private void OnApplicationExit(object sender, EventArgs e)
         {
             Conexion.establecerAusente(usuario, true);
+            log.escribirLog(Constantes.LOG_INFO, " ************ Cierre Aplicación ************************ ");
         }
 
         //Evento para capturar el cierre de sesión / apagado (applicationExit no se dispara)
@@ -129,6 +134,7 @@ namespace FreeDevs
             if (m.Msg == WM_QUERYENDSESSION)
             {
                 Conexion.establecerAusente(usuario, true);
+                log.escribirLog(Constantes.LOG_INFO, " ************ Cierre Aplicación ************************ ");
             }
             base.WndProc(ref m);
         }
@@ -156,7 +162,7 @@ namespace FreeDevs
         private void cargarEmpleados()
         {
             //Carga de BBDD
-            devs = conexion.ObtenerEmpleados();
+            devs = conexion.obtenerEmpleados();
             
             /*
             devs.Clear();

@@ -7,5 +7,7 @@ namespace FreeDevs.Clases
         public const string BD          = "ntsdev";
         public const string USUARIO     = "root";
         public const string PASS        = "root";
+
+        public const string LOG         = "log.txt";
     }
 }
