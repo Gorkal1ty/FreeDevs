@@ -106,7 +106,8 @@ namespace FreeDevs
         {
             if (e.KeyCode == Keys.Enter)
             {
-                formInicio.Conexion.actualizarTarea(formInicio.usuario, txtTarea.Text);
+                if (!Constantes.MODO_PRUEBAS)
+                    formInicio.Conexion.actualizarTarea(formInicio.usuario, txtTarea.Text);
                 if (txtTarea.Text.Equals(""))
                 {
                     txtTarea.Text = "Introduce aquí tu tarea";
@@ -159,7 +160,8 @@ namespace FreeDevs
                     break;
             }
             //Actualizar BBDD
-            formInicio.Conexion.actualizarEstado(formInicio.usuario, formInicio.estado);
+            if (!Constantes.MODO_PRUEBAS)
+                formInicio.Conexion.actualizarEstado(formInicio.usuario, formInicio.estado);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)

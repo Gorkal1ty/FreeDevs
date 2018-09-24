@@ -2,6 +2,8 @@
 {
     class Constantes
     {
+        public const bool MODO_PRUEBAS = true;
+
         public const int ESTADO_LIBRE              = 0;
         public const int ESTADO_DISPONIBLE         = 1;
         public const int ESTADO_OCUPADO            = 2;

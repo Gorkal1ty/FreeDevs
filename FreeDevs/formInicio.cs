@@ -110,7 +110,9 @@ namespace FreeDevs
             icono.ContextMenu = menu;
 
             //Desactivar Ausente en BBDD
-            Conexion.establecerAusente(usuario, false);
+            if (!Constantes.MODO_PRUEBAS)
+                Conexion.establecerAusente(usuario, false);
+
         }
 
         #region Eventos
@@ -155,7 +157,8 @@ namespace FreeDevs
         //Evento para capturar el cierre manual de la aplicación (click derecho)
         private void OnApplicationExit(object sender, EventArgs e)
         {
-            Conexion.establecerAusente(usuario, true);
+            if (!Constantes.MODO_PRUEBAS)
+                Conexion.establecerAusente(usuario, true);
             log.escribirLog(Constantes.LOG_INFO, " ************ Cierre Aplicación ************************ ");
         }
 
@@ -168,7 +171,8 @@ namespace FreeDevs
         {
             if (m.Msg == WM_QUERYENDSESSION || m.Msg == WM_CLOSE)
             {
-                Conexion.establecerAusente(usuario, true);
+                if (!Constantes.MODO_PRUEBAS)
+                    Conexion.establecerAusente(usuario, true);
                 log.escribirLog(Constantes.LOG_INFO, " ************ Cierre Aplicación ************************ ");
             }
             base.WndProc(ref m);
@@ -197,23 +201,27 @@ namespace FreeDevs
         private void cargarEmpleados()
         {
             //Carga de BBDD
-            devs = conexion.obtenerEmpleados();
-            
-            /*
-            devs.Clear();
 
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Aitor Etxezarraga", "Contratación Digital MC", Constantes.AUSENTE_SI));
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Joseba Alonso", "FS R1",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Gorka Barron", "GDPR Alta Prospectos",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Goizalde Machin", "#8516",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Alexander Peña", "FSM Francia",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Daniel Crego", "#8516",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Asier Cortes", "",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Unai Rabanal", "GDPR Alta Facil",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Eneko Soraluze", "", Constantes.AUSENTE_SI));
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Gaizka Montero", "Contratación Digital MC",  Constantes.AUSENTE_NO));
-            devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Endika Salgueiro", "Contratación Digital MC",  Constantes.AUSENTE_NO));
-            */
+            if (Constantes.MODO_PRUEBAS)
+            {
+                devs.Clear();
+
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Aitor Etxezarraga", "Contratación Digital MC", Constantes.AUSENTE_SI));
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Joseba Alonso", "FS R1", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Gorka Barron", "GDPR Alta Prospectos", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Goizalde Machin", "#8516", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Alexander Peña", "FSM Francia", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_DISPONIBLE, "Daniel Crego", "#8516", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Asier Cortes", "", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Unai Rabanal", "GDPR Alta Facil", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_LIBRE, "Eneko Soraluze", "", Constantes.AUSENTE_SI));
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Gaizka Montero", "Contratación Digital MC", Constantes.AUSENTE_NO));
+                devs.Add(new Dev(Constantes.ESTADO_OCUPADO, "Endika Salgueiro", "Contratación Digital MC", Constantes.AUSENTE_NO));
+            }
+            else
+            {
+                devs = conexion.obtenerEmpleados();
+            }
 
             //Carga según estados (evita ordenación automática)
             listado.Clear();
